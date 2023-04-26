@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:31:41 by rumachad          #+#    #+#              #
-#    Updated: 2023/04/24 10:51:35 by rumachad         ###   ########.fr        #
+#    Updated: 2023/04/26 12:24:33 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = ft_isalnum.c ft_isalpha.c ft_isdigit.c \
 		ft_strjoin.c ft_itoa.c ft_memcmp.c \
 		ft_strtrim.c ft_putchar_fd.c ft_putstr_fd.c \
 		ft_putendl_fd.c ft_putnbr_fd.c ft_striteri.c \
-		ft_strmapi.c
+		ft_strmapi.c ft_split.c
 OBJS = ${SRC:.c=.o}
 BONUS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 			ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
@@ -30,7 +30,7 @@ BONUS_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 BONUS_OBJS = ${BONUS_SRC:.c=.o}
 HEADER = libft.h
 INCLUDE = -I include
-CC = gcc
+CC = cc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
 .c.o:
@@ -46,18 +46,11 @@ clean:
 
 fclean: clean
 		${RM} ${NAME}
-		${RM} teste
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
 
-teste:
-		${CC} ${CFLAGS} ${INCLUDE} main.c ${NAME} -o teste
-
-re:	fclean all teste
+re:	fclean ${NAME}
 
 bonus:	${BONUS_OBJS}
 			ar rcs ${NAME} ${BONUS_OBJS}
 
-.PHONY:	all	clean fclean re
+.PHONY:	all	clean fclean re bonus
 

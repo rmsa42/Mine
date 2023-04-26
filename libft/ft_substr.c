@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:14:27 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/24 16:12:45 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:08:44 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char			*str;
 
 	i = 0;
-	if (s[i] == '\0')
-		return (NULL);
-	if (start > ft_strlen(s))
+	if (start > ft_strlen(s) || s[i] == '\0')
 		return (ft_strdup(""));
 	if (len > ft_strlen(&s[start]))
 		len = ft_strlen(&s[start]);
@@ -72,7 +70,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char mstr[] = "";
 	char *a;
-	a = ft_substr(&mstr[0], 9, 3);
+	a = ft_substr(&mstr[0], 1, 1);
 	printf("%s\n", a);
 	free(a);
 } */

@@ -6,11 +6,10 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 10:59:46 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/24 12:45:03 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:54:22 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h> */
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -22,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	cdest = dest;
 	csrc = src;
 	i = 0;
+	if (!cdest && !csrc)
+		return (NULL);
 	while (i < n)
 	{
 		cdest[i] = csrc[i];

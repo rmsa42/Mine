@@ -6,49 +6,43 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:22:56 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/20 15:58:49 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:54:50 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-} */
-
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int				i;
-	int				n1;
+	unsigned int		i;
+	unsigned char		*src1;
+	unsigned char		*dest1;
 
-	n1 = (int)n;
-	if (*(char *)(src) == '\0' || *(char *)(dest) == '\0')
+	src1 = (unsigned char *)src;
+	dest1 = (unsigned char *)dest;
+	if (!src1 && !dest1)
 		return (NULL);
-	if (src < dest)
+	if (src1 < dest1)
 	{
-		i = n1 - 1;
-		while (i >= 0)
-		{
-			*(char *)(dest + i) = *(char *)(src + i);
-			i--;
-		}
+		while (n-- > 0)
+			dest1[n] = src1[n];
 	}
 	else
 	{
 		i = 0;
-		while (i < n1)
+		while (i < n)
 		{
-			*(char *)(dest + i) = *(char *)(src + i);
+			dest1[i] = src1[i];
 			i++;
 		}
 	}
 	return (dest);
 }
+
+/* int main()
+{
+	char src[] = "12345";
+	char dest[] = "45678";
+
+	printf("%s\n", ft_memmove(&dest[0], &src[0], 3));
+} */

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:16:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/24 16:45:05 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:59:18 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	ft_char(const char *str, int c)
 		i++;
 	}
 	return (i);
-} */
-
+}
+ */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	i;
@@ -71,7 +71,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	if (s1[i] == '\0' || set[i] == '\0')
-		return (ft_strdup(""));
+		return (ft_strdup(s1));
 	while (ft_char(set, s1[i]) == 1 && s1[i] != '\0')
 		i++;
 	k = ft_strlen(s1);
@@ -93,7 +93,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 /* int main()
 {
-	char s1[] = "";
+	char s1[] = "abcd";
 	char *set = "";
 	char *a;
 

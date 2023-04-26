@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:57:49 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/18 17:38:48 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/26 10:16:47 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (cs[i] == c)
+		if (cs[i] == (char)c)
 			return (&cs[i]);
 		i++;
 	}
@@ -31,6 +31,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 /* int main()
 {
-	char s[] = "Hellyo";
+	char s[] = "";
 	printf("%p\n", ft_memchr(&s[0], 'y', 5));
 } */

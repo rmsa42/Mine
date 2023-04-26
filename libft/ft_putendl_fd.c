@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:37:14 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/20 09:39:30 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:58:58 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putendl_fd(char *s, int fd)
 
 /* int main()
 {
-	char s[] = "Hello";
+	char s[] = " Hello";
 
 	ft_putendl_fd(&s[0], 2);
 } */
