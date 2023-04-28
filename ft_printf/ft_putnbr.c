@@ -32,7 +32,7 @@ void	ft_putnbr(int n)
 	}
 	else
 	{
-		ft_putnbr(n / 10, fd);
-		ft_putnbr(n % 10, fd);
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
 }

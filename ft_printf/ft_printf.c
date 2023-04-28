@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 11:37:12 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/28 16:44:47 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/28 20:49:36 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@ void	formats(const char format, va_list args)
 {
 	if (format == 'c')
 		ft_putchar(va_arg(args, int));
-	if (format == 's')
+	else if (format == 's')
 		ft_putstr(va_arg(args, char *));
-	if (format == 'd')
+	else if (format == 'd')
 		ft_putnbr(va_arg(args, int));
-	if (format == 'i')
+	else if (format == 'i')
 		ft_putnbr(va_arg(args, int));
-	if (format == 'x')
+	else if (format == 'x')
 		ft_printhexa(va_arg(args, int));
+	else if (format == 'X')
+		ft_printhexa_upp(va_arg(args, int));
+	else if (format == '%')
+		ft_putchar('%');
 }
 
 int	ft_printf(const	char *format, ...)
@@ -52,10 +56,10 @@ int	ft_printf(const	char *format, ...)
 
 int	main(void)
 {
-	/* char	r = 'r'; */
-	/* char	*str = "Hello"; */
-	/* int		n = 111; */
+	/* char	r = 'r'; 
+ 	char	*str = "Hello"; */
+	int		n = 1234567;
 	
-	ft_printf("%x", n);
+	ft_printf("%s", n);
 	printf("\n");
-}
+} 

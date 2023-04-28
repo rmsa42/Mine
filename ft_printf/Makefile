@@ -12,7 +12,8 @@
 
 NAME = libftprintf.a
 SRC = ft_printf.c ft_itoa.c ft_printhexa.c \
-		ft_putchar.c ft_putnbr.c ft_putstr.c
+		ft_putchar.c ft_putnbr.c ft_putstr.c \
+		ft_printhexa_upp.c
 OBJS = ${SRC:.c=.o}
 HEADER = ft_printf.h
 INCLUDE = -I include
