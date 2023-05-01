@@ -6,14 +6,21 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:22:50 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/28 15:25:21 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:24:10 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
+	int	i;
+
+	i = 0;
 	while (*s != '\0')
+	{
 		ft_putchar(*s++);
+		i++;
+	}
+	return (i);
 }

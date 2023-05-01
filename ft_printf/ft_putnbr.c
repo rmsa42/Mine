@@ -6,33 +6,52 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:27:02 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/28 16:34:41 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:30:04 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+static int	len(int num)
 {
+	int	i;
+
+	i = 0;
+	if (num < 0 || num == 0)
+		i++;
+	while (num != 0)
+	{
+		num = num / 10;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_putnbr(int n)
+{
+	int	i;
+
+	i = len(n);
 	if (n == -2147483648)
 	{
-		write(1, "-", 1);
-		write(1, "2", 1);
+		ft_putchar('-');
+		ft_putchar('2');
 		n = 147483648;
 	}
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		ft_putchar('-');
 		n = -n;
 	}
 	if (n < 10)
 	{
 		n = n + '0';
-		write(1, &n, 1);
+		ft_putchar(n);
 	}
 	else
 	{
 		ft_putnbr(n / 10);
 		ft_putnbr(n % 10);
 	}
+	return (i);
 }

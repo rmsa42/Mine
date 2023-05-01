@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_put_unsi_nbr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 13:17:58 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/01 14:58:21 by rumachad         ###   ########.fr       */
+/*   Created: 2023/05/01 13:16:06 by rumachad          #+#    #+#             */
+/*   Updated: 2023/05/01 14:20:00 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
+static int	len(unsigned int num)
+{
+	int	i;
 
-int		ft_printf(const char *format, ...);
-int		ft_putstr(char *s);
-int		ft_putchar(char c);
-int		ft_printhexa(int nbr);
-int		ft_printhexa_upp(int nbr);
-int		ft_putnbr(int n);
-int		ft_put_unsi_nbr(unsigned int n);
-char	*ft_itoa(int n);
+	i = 0;
+	while (num != 0)
+	{
+		num = num / 10;
+		i++;
+	}
+	return (i);
+}
 
-#endif
+int	ft_put_unsi_nbr(unsigned int n)
+{
+	if (n < 10)
+	{
+		n = n + '0';
+		ft_putchar(n);
+	}
+	else
+	{
+		ft_put_unsi_nbr(n / 10);
+		ft_put_unsi_nbr(n % 10);
+	}
+	return (len(n));
+}

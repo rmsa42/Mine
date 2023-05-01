@@ -6,17 +6,34 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:29:03 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/28 16:40:06 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:41:36 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printhexa(int nbr)
+static int	len(int num)
+{
+	int	i;
+
+	i = 0;
+	if (num == 0)
+		i++;
+	while (num != 0)
+	{
+		num = num / 16;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_printhexa(int nbr)
 {
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
+	if (nbr < 0)
+		nbr = (unsigned int)nbr;
 	if (nbr < 16)
 		ft_putchar(*(hexa + nbr));
 	else
@@ -24,4 +41,5 @@ void	ft_printhexa(int nbr)
 		ft_printhexa(nbr / 16);
 		ft_printhexa(nbr % 16);
 	}
+	return (len(nbr));
 }
