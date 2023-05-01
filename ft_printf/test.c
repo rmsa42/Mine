@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 14:50:43 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/01 15:35:49 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:14:20 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	char	r = 'r';
  	char	*str = "Hello";
 	int		n = 16;
-	int		m = -100;
+	int		m = -1;
 	
 	
 /* 	ft_printf("%i\n", ft_printf("%c\n", r));
@@ -47,6 +47,8 @@ int	main(void)
 	ft_printf("%i\n", ft_printf("%u\n", m));
 	printf("%i\n", printf("%u\n", m));
 	ft_printf("\n"); */
-	ft_printf("%i\n", ft_printf("%x %X\n", m, m));
-	printf("%i\n", printf("%x %X\n", m, m));
+	ft_printf("%i\n", ft_printf("%p\n", str));
+	printf("%i\n", printf("%p\n", str));
+	/* ft_printf("%i\n", ft_printf("%u\n", m));
+	printf("%i\n", printf("%u\n", m)); */
 }

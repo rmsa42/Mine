@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printhexa_upp.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:36:57 by rui               #+#    #+#             */
-/*   Updated: 2023/05/01 15:43:26 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/01 23:09:10 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	len(int num)
+static int	len(unsigned int num)
 {
 	int	i;
 
@@ -27,16 +27,11 @@ static int	len(int num)
 	return (i);
 }
 
-int	ft_printhexa_upp(int nbr)
+int	ft_printhexa_upp(unsigned int nbr)
 {
 	char	*hexa;
 
 	hexa = "0123456789ABCDEF";
-	if (nbr < 0)
-	{
-		nbr = -nbr;
-		ft_putchar('-');
-	}
 	if (nbr < 16)
 		ft_putchar(*(hexa + nbr));
 	else

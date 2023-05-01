@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 11:37:12 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/01 14:50:27 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:41:06 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	formats(const char format, va_list args, int nw)
 	else if (format == 'u')
 		nw = ft_put_unsi_nbr(va_arg(args, int));
 	else if (format == 'x')
-		nw = ft_printhexa(va_arg(args, int));
+		nw = ft_printhexa(va_arg(args, unsigned int));
 	else if (format == 'X')
-		nw = ft_printhexa_upp(va_arg(args, int));
+		nw = ft_printhexa_upp(va_arg(args, unsigned int));
 	else if (format == '%')
 		nw = ft_putchar('%');
 	return (nw);
