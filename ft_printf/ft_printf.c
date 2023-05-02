@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 11:37:12 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/01 22:41:06 by rui              ###   ########.fr       */
+/*   Updated: 2023/05/02 15:10:03 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	formats(const char format, va_list args, int nw)
 	else if (format == 's')
 		nw = ft_putstr(va_arg(args, char *));
 	else if (format == 'p')
-		nw = ft_printhexa(va_arg(args, int));
+		nw = ft_printpointer_start(va_arg(args, unsigned long ));
 	else if (format == 'd')
 		nw = ft_putnbr(va_arg(args, int));
 	else if (format == 'i')
 		nw = ft_putnbr(va_arg(args, int));
 	else if (format == 'u')
-		nw = ft_put_unsi_nbr(va_arg(args, int));
+		nw = ft_put_unsi_nbr(va_arg(args, unsigned int));
 	else if (format == 'x')
 		nw = ft_printhexa(va_arg(args, unsigned int));
 	else if (format == 'X')

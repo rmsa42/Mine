@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:22:50 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/01 13:24:10 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:15:25 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_putstr(char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return (write(1, "(null)", 6));
 	while (*s != '\0')
 	{
 		ft_putchar(*s++);

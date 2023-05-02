@@ -1,47 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_unsi_nbr.c                                  :+:      :+:    :+:   */
+/*   ft_printpointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 13:16:06 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/02 13:20:48 by rumachad         ###   ########.fr       */
+/*   Created: 2023/05/02 10:04:16 by rumachad          #+#    #+#             */
+/*   Updated: 2023/05/02 15:22:43 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	len(unsigned int num)
+static int	len(unsigned long num)
 {
 	int	i;
 
-	i = 0;
-	if (num == 0)
-		i++;
+	i = 2;
 	while (num != 0)
 	{
-		num = num / 10;
+		num = num / 16;
 		i++;
 	}
 	return (i);
 }
 
-int	ft_put_unsi_nbr(unsigned int n)
+int	ft_printpointer_start(unsigned long nbr)
 {
-	int		k;
-	char	c;
+	if (nbr == 0)
+		return (write(1, "(nil)", 5));
+	write(1, "0x", 2);
+	return (ft_printpointer(nbr));
+}
 
-	k = len(n);
-	if (n < 10)
-	{
-		c = n + '0';
-		ft_putchar(c);
-	}
+int	ft_printpointer(unsigned long nbr)
+{
+	char				*hexa;
+
+	hexa = "0123456789abcdef";
+	if (nbr < 16)
+		ft_putchar(*(hexa + nbr));
 	else
 	{
-		ft_put_unsi_nbr(n / 10);
-		ft_put_unsi_nbr(n % 10);
+		ft_printpointer(nbr / 16);
+		ft_printpointer(nbr % 16);
 	}
-	return (k);
+	return (len(nbr));
 }
