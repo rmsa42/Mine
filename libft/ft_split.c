@@ -6,13 +6,13 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 16:38:26 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/26 17:11:41 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:06:57 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	numw(char const *str, char c)
+static int	numw(char const *str, char c)
 {
 	int	i;
 	int	k;
@@ -33,7 +33,7 @@ int	numw(char const *str, char c)
 	return (i);
 }
 
-char	*nstr(char *s, char c)
+static char	*nstr(char *s, char c)
 {
 	int		i;
 	char	*str;

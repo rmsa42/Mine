@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 11:05:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/03 10:58:34 by rumachad         ###   ########.fr       */
+/*   Created: 2023/05/03 12:06:01 by rumachad          #+#    #+#             */
+/*   Updated: 2023/05/03 14:32:45 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	x;
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-	x = ft_strlen(src);
-	i = 0;
-	if (size != 0)
-	{
-		while (src[i] != '\0' && i < size - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (x);
-}
+char	*get_next_line(int fd);
 
-/* int main()
-{
-	char src[] = "Hello5";
-	char dest[] = "Hey";
-
-	printf("%ld\n", ft_strlcpy(&dest[0], &src[0], 0));
-} */
+#endif

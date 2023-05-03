@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:31:59 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/20 12:30:22 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:07:29 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	len(int num)
+static int	len(int num)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int	len(int num)
 	return (i);
 }
 
-char	*loop(char *str, int nlen, long long num)
+static char	*loop(char *str, int nlen, long long num)
 {
 	while (num != 0)
 	{

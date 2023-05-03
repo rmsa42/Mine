@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 15:16:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/26 09:59:18 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:08:50 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 	return (duplicate);
 } */
 
-int	ft_char(const char *str, int c)
+static int	ft_char(const char *str, int c)
 {
 	int		i;
 	char	*str2;
