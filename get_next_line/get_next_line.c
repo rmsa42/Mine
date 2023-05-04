@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:05:47 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/03 15:34:59 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:31:43 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,46 @@
 
 char	*get_next_line(int fd)
 {
-	int		i;
-	char	*buffer;
+	static int		temp;
+	char			c;
+	static char		*buffer;
 
-	buffer = (char *)malloc(BUFFER_SIZE * sizeof(char));
+	if (fd == -1 || BUFFER_SIZE == 0)
+		return (NULL);
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (buffer == NULL)
 		return (NULL);
-	if (fd < 0)
-		return (NULL);
-	i = 0;
-	while (read(fd, buffer, 5) < BUFFER_SIZE)
+	temp = 0;
+	while (read(fd, &c, 1) == 1 && temp < BUFFER_SIZE)
 	{
-		printf("%c", buffer[i]);
-		i++;
+		buffer[temp] = c;
+		if (c == '\n')
+		{
+			buffer = (char *)realloc(buffer, (temp + 1) * sizeof(char));
+			if (buffer == NULL)
+				return (NULL);
+			buffer[temp + 1] = '\0';
+			return (buffer);
+		}
+		temp++;
 	}
-	return (buffer);
+	buffer = (char *)realloc(buffer, (0) * sizeof(char));
+	return (NULL);
 }
 
-int main()
+/* int main()
 {
 	int fd;
+	int	i;
+	char	*a;
 
 	fd = open ("/nfs/homes/rumachad/42Curso/get_next_line/test.txt", O_RDWR);
-	get_next_line(fd);
-}
+	i = 0;
+	while (i < 5)
+	{
+		a = get_next_line(fd);
+		printf("%s", a);
+		free(a);
+		i++;
+	}
+} */
