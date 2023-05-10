@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:42:59 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/03 10:51:39 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:24:37 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	j;
-	size_t	dst_length;
-	size_t	src_length;
+	unsigned int	i;
+	int				j;
+	unsigned int	dst_length;
+	int				src_length;
 
 	src_length = ft_strlen(src);
 	dst_length = ft_strlen(dst);

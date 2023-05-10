@@ -6,55 +6,113 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:05:47 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/04 16:31:43 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:01:27 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
 
-char	*get_next_line(int fd)
+char	*delete_line(char *tmp)
 {
-	static int		temp;
-	char			c;
-	static char		*buffer;
+	int		i;
+	int		j;
+	char	*leftover;
 
-	if (fd == -1 || BUFFER_SIZE == 0)
-		return (NULL);
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (buffer == NULL)
-		return (NULL);
-	temp = 0;
-	while (read(fd, &c, 1) == 1 && temp < BUFFER_SIZE)
+	i = 0;
+	while (tmp[i] != '\n' && tmp[i])
+		i++;
+	if (!tmp)
 	{
-		buffer[temp] = c;
-		if (c == '\n')
-		{
-			buffer = (char *)realloc(buffer, (temp + 1) * sizeof(char));
-			if (buffer == NULL)
-				return (NULL);
-			buffer[temp + 1] = '\0';
-			return (buffer);
-		}
-		temp++;
+		free(tmp);
+		return (NULL);
 	}
-	buffer = (char *)realloc(buffer, (0) * sizeof(char));
-	return (NULL);
+	leftover = (char *)malloc((ft_strlen(tmp) - i + 1) * sizeof(char));
+	if (leftover == NULL)
+		return (NULL);
+	j = 0;
+	if (tmp[i] == '\n')
+		i++;
+	while (tmp[i] != '\0')
+	{
+		leftover[j] = tmp[i];
+		i++;
+		j++;
+	}
+	leftover[j] = '\0';
+	free(tmp);
+	return (leftover);
 }
 
-/* int main()
+char	*line(char *tmp)
 {
-	int fd;
-	int	i;
+	char	*line;
+	int		i;
+
+	i = 0;
+	if (!tmp)
+		return (NULL);
+	while (tmp[i] != '\n')
+		i++;
+	line = (char *)malloc(sizeof(char) * i + 2);
+	if (line == NULL)
+		return (NULL);
+	i = 0;
+	while (tmp[i] != '\n')
+	{
+		line[i] = tmp[i];
+		i++;
+	}
+	if (tmp[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*tmp;
+	int			size;
+	char		*fline;
+	char		*buffer;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	size = 1;
+	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (buffer == NULL)
+		return (NULL);
+	while (size != 0)
+	{
+		if (ft_strchr(tmp, '\n') != NULL)
+			break ;
+		size = read(fd, buffer, BUFFER_SIZE);
+		if (size == 0)
+		{
+		
+			return (NULL);
+		}
+		buffer[size] = '\0';
+		tmp = ft_strjoin(tmp, buffer);
+	}
+	free(buffer);
+	fline = line(tmp);
+	tmp = delete_line(tmp);
+	return (fline);
+}
+
+int main()
+{
+	int 	fd;
+	int		i = 0;
 	char	*a;
 
 	fd = open ("/nfs/homes/rumachad/42Curso/get_next_line/test.txt", O_RDWR);
-	i = 0;
-	while (i < 5)
+	while (i < 6)
 	{
 		a = get_next_line(fd);
 		printf("%s", a);
 		free(a);
 		i++;
 	}
-} */
+}

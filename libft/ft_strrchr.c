@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:43:32 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/24 14:32:43 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:32:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ char	*ft_strrchr(const char *str, int c)
 
 /* int main()
 {
-	char str[] = "dabcefgt";
-	int a = 'd';
-	printf("%s\n", ft_strrchr(&str[0], a));
+	char mstr[] = "aaabcabcd";
+	char sstr[] = "aabc";
+
+	printf("%s\n", ft_strnstr(&mstr[0], &sstr[0], -1));
 } */

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 11:05:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/03 10:58:34 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/10 10:25:22 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	x;
+	unsigned int	i;
+	int				x;
 
 	x = ft_strlen(src);
 	i = 0;

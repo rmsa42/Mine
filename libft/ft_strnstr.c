@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:39:18 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/24 15:32:34 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:26:01 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ char	*ft_strnstr(const char *mainstr, const char *substr, size_t len)
 
 /* int main()
 {
-	char mstr[] = "abcdefgh";
-	char sstr[] = "abc";
+	char mstr[] = "aaabcabcd";
+	char sstr[] = "aabc";
 
-	printf("%s\n", ft_strnstr(&mstr[0], &sstr[0], 3));
+	printf("%s\n", ft_strnstr(&mstr[0], &sstr[0], -1));
 } */
