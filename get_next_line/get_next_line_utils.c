@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:37:19 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/10 15:06:21 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:19:40 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = -1;
 	while (s1[++i])
 		str[i] = s1[i];
-	j = 0;
-	while (s2[j])
-	{
+	j = -1;
+	while (s2[++j])
 		str[i + j] = s2[j];
-		j++;
-	}
 	str[i + j] = '\0';
 	free(s1);
 	return (str);

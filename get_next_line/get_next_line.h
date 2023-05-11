@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:06:01 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/10 16:00:36 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:32:48 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFFER_SIZE 4
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);

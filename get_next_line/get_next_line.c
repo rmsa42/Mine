@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:05:47 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/10 16:01:27 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:06:59 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	*delete_line(char *tmp)
 	char	*leftover;
 
 	i = 0;
-	while (tmp[i] != '\n' && tmp[i])
-		i++;
-	if (!tmp)
+	if (!tmp[i])
 	{
 		free(tmp);
 		return (NULL);
 	}
+	while (tmp[i] != '\n' && tmp[i])
+		i++;
 	leftover = (char *)malloc((ft_strlen(tmp) - i + 1) * sizeof(char));
 	if (leftover == NULL)
 		return (NULL);
@@ -34,11 +34,7 @@ char	*delete_line(char *tmp)
 	if (tmp[i] == '\n')
 		i++;
 	while (tmp[i] != '\0')
-	{
-		leftover[j] = tmp[i];
-		i++;
-		j++;
-	}
+		leftover[j++] = tmp[i++];
 	leftover[j] = '\0';
 	free(tmp);
 	return (leftover);
@@ -50,15 +46,18 @@ char	*line(char *tmp)
 	int		i;
 
 	i = 0;
-	if (!tmp)
+	if (!tmp[i])
 		return (NULL);
-	while (tmp[i] != '\n')
+	while (tmp[i] != '\n' && tmp[i] != '\0')
 		i++;
-	line = (char *)malloc(sizeof(char) * i + 2);
+	if (tmp[i] == '\0')
+		line = (char *)malloc(sizeof(char) * i + 1);
+	else
+		line = (char *)malloc(sizeof(char) * i + 2);
 	if (line == NULL)
 		return (NULL);
 	i = 0;
-	while (tmp[i] != '\n')
+	while (tmp[i] != '\n' && tmp[i])
 	{
 		line[i] = tmp[i];
 		i++;
@@ -69,33 +68,41 @@ char	*line(char *tmp)
 	return (line);
 }
 
-char	*get_next_line(int fd)
+char	*readed(char *tmp, int fd)
 {
-	static char	*tmp;
-	int			size;
-	char		*fline;
-	char		*buffer;
+	int		size;
+	char	*buffer;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	size = 1;
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
-	while (size != 0)
+	size = 1;
+	while (ft_strchr(tmp, '\n') == NULL && size != 0)
 	{
-		if (ft_strchr(tmp, '\n') != NULL)
-			break ;
 		size = read(fd, buffer, BUFFER_SIZE);
-		if (size == 0)
+		if (size == -1)
 		{
-		
+			free(tmp);
+			free(buffer);
 			return (NULL);
 		}
 		buffer[size] = '\0';
 		tmp = ft_strjoin(tmp, buffer);
 	}
 	free(buffer);
+	return (tmp);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*tmp;
+	char		*fline;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	tmp = readed(tmp, fd);
+	if (tmp == NULL)
+		return (NULL);
 	fline = line(tmp);
 	tmp = delete_line(tmp);
 	return (fline);
