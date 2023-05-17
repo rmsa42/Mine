@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 12:05:47 by rumachad          #+#    #+#             */
-/*   Updated: 2023/05/17 11:31:31 by rumachad         ###   ########.fr       */
+/*   Created: 2023/05/17 10:46:13 by rumachad          #+#    #+#             */
+/*   Updated: 2023/05/17 12:06:11 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,21 @@ char	*readed(char *nw_line, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*nw_line;
+	static char	*nw_line[FOPEN_MAX];
 	char		*fline;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	else
 	{
-		nw_line = readed(nw_line, fd);
-		if (nw_line == NULL)
+		printf("%i\n", fd);
+		nw_line[fd] = readed(nw_line[fd], fd);
+		if (nw_line[fd] == NULL)
 			return (NULL);
 		else
 		{
-			fline = line(nw_line);
-			nw_line = delete_line(nw_line);
+			fline = line(nw_line[fd]);
+			nw_line[fd] = delete_line(nw_line[fd]);
 			return (fline);
 		}
 	}
@@ -116,31 +117,31 @@ char	*get_next_line(int fd)
 
 /* int main()
 {
+	int		change;
 	int		i = 0;
 	int		fd;
+	int		fd2;
 	char	*a;
 
 	fd = open ("/nfs/homes/rumachad/42Curso/get_next_line/test.txt", O_RDWR);
-	while (i < 8)
+	fd2 = open ("/nfs/homes/rumachad/42Curso/get_next_line/test2.txt", O_RDWR);
+	change = fd;
+	while (i < 9)
 	{
-		a = get_next_line(fd);
-		printf("%s", a);
-		free(a);
-		i++;
-	}
-	close (fd);
-} */
-
-/* int main()
-{
-	int i = 0;
-	char *a;
-	
-	while (i < 2)
-	{
-		a = get_next_line(0);
-		printf("Function output: %s", a);
-		free(a);
+		if (change == fd)
+		{
+			a = get_next_line(change);
+			printf("%s", a);
+			free(a);
+			change = fd2;
+		}
+		else
+		{
+			a = get_next_line(change);
+			printf("%s", a);
+			free(a);
+			change = fd;
+		}
 		i++;
 	}
 } */

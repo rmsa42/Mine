@@ -6,13 +6,13 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:02:14 by rumachad          #+#    #+#             */
-/*   Updated: 2023/04/18 18:57:56 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:43:33 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h> */
-/* #include <stdlib.h> */
-#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+/* #include "libft.h" */
 
 int	ft_atoi(const char *str)
 {
@@ -39,9 +39,9 @@ int	ft_atoi(const char *str)
 	return (c * a);
 }
 
-/* int	main()
+int	main()
 {
-	char str[] = "-+123";
+	char str[] = "-123";
 	printf("%d\n", atoi(&str[0]));
 	printf("%d\n", ft_atoi(&str[0]));
-} */
+}

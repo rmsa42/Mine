@@ -6,12 +6,12 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/27 12:39:58 by rumachad          #+#    #+#              #
-#    Updated: 2023/05/02 12:16:54 by rumachad         ###   ########.fr        #
+#    Updated: 2023/05/17 10:30:52 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRC = ft_printf.c ft_itoa.c ft_printhexa.c \
+SRC = ft_printf.c ft_printhexa.c \
 		ft_putchar.c ft_putnbr.c ft_putstr.c \
 		ft_printhexa_upp.c ft_put_unsi_nbr.c \
 		ft_printpointer.c
