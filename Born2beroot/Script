@@ -1,0 +1,4 @@
+Architecture and OS: uname -a
+Physcal CPU: grep -c 'physical id' /proc/cpuinfo
+Virtual CPU: grep -c processor /proc/cpuinfo
+
