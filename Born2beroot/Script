@@ -1,4 +1,32 @@
-Architecture and OS: uname -a
-Physcal CPU: grep -c 'physical id' /proc/cpuinfo
-Virtual CPU: grep -c processor /proc/cpuinfo
+#!/bin/bash
+
+Architecture=$(uname -a)
+PhysCPU=$(grep -c 'physical id' /proc/cpuinfo)
+VCPU=$(grep -c processor /proc/cpuinfo)
+Ramdiv=$(free --mega | awk '/Mem.:/{print $3"/"$2"MB"}')
+Ramper=$(free --mega | awk '/Mem.:/{printf ("(%.2f%%)"),  $3/$2*100}')
+DiskUsage=$(df -BG | grep "/dev/" | grep -v "/boot" | awk '{totalusage += $3} {totalmem += $2} END >
+Diskper=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{totalusage += $3} {totalmem += $2} END {pr>
+CpuLoad=$(vmstat 1 4 | tail -1 | awk '{print $15}')
+LastReboot=$(who -b | awk '{print $4" "$5}')
+LVMUSE=$(if [ $(lsblk | grep "lvm" | wc -l) != 0 ]; then echo yes; else echo no; fi)
+TCP=$(ss | grep -c "tcp")
+TCPE=$(echo ESTABLISHED)
+NumberUsers=$(users | wc -w)
+IP=$(hostname -I)
+MAC=$(cat /sys/class/net/*/address | head -1)
+Sudo=$(journalctl _COMM=sudo -q | grep COMMAND | wc -l)
+SudoCmd=$(echo cmd)
+
+wall "Architecture: $Architecture
+CPU physical : $PhysCPU
+vCPU : $VCPU
+Memory Usage: $Ramdiv $Ramper
+Disk Usage: $DiskUsage $Diskper
+Last boot: $LastReboot
+LVM use: $LVMUSE
+Connections TCP : $TCP $TCPE
+User log: $NumberUsers
+Network: $IP $MAC
+Sudo : $Sudo $SudoCmd"
 
