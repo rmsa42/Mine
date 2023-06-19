@@ -6,7 +6,7 @@
 /*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:51:11 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/19 16:09:51 by rui              ###   ########.fr       */
+/*   Updated: 2023/06/20 00:38:18 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	ft_lstsize_ps(Node *a);
 Node	*swap_a(Node *a);
 Node	*swap_b(Node *b);
 Node	*push_b(Node **b, Node **a, int data_a);
+Node	*push_a(Node **b, Node **a, int data_b);
 
 #endif
