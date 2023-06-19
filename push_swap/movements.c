@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:25:10 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/13 15:32:09 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:12:59 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,29 @@ Node	*swap_b(Node *b)
 		b->data = b->next->data;
 		b->next->data = temp;
 		return (b);
+	}
+}
+
+Node	*push_b(Node **b, Node **a, int data_a)
+{
+	Node	*new = NULL;
+	Node	*temp = NULL;
+	
+	if (a == NULL)
+		return (NULL); /* Saber o que retornar */
+	else
+	{
+		if (*b == NULL)
+		{
+			*b = create_node(data_a);
+		}
+		else
+		{
+			new = *b;
+			new->next = create_node(data_a);
+		}
+		temp = *a;
+		*a = (*a)->next;
+		free(temp);
 	}
 }
