@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:20:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/20 16:29:49 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:44:42 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,41 @@ void	sort_three(Node **a)
 		}
 	}
 }
+
+/* int	sort(Node **a, Node **b)
+{
+	Node	*temp;
+	int		min;
+	int		min_s;
+	int		i;
+
+	if (*a == NULL)
+		return (0);
+	i = 1;
+	temp = *a;
+	min = (*a)->data;
+	while (temp != NULL)
+	{
+		if (temp->data < min)
+		{
+			min = temp->data;
+			temp = *a;
+			min_s = i;
+		}
+		temp = temp->next;
+		i++;
+	}
+	temp = *a;
+	while (temp->data != min)
+	{
+		if (min_s < (i/2))
+			rotate_a(a);
+		else
+			rrotate_a(a);
+		temp = *a;
+	}
+	push_b(b, a, (*a)->data);
+	sort(a, b);
+	push_a(b, a, (*b)->data);
+	return (1);
+} */

@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 10:56:36 by rumachad          #+#    #+#              #
-#    Updated: 2023/06/20 17:00:41 by rumachad         ###   ########.fr        #
+#    Updated: 2023/06/21 14:04:19 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC = push_swap.c movements.c movements2.c \
 		movements3.c ps_list_utils.c ps_sort_utils.c
 LIBFT_DIR = libft
 LIBFT_OBJS = 
-MAKE = make -C
+MAKE = make
 OBJS = ${SRC:.c=.o}
 HEADER = push_swap.h
 INCLUDE = -I include
@@ -27,16 +27,15 @@ CFLAGS = -Wall -Werror -Wextra
 
 ${NAME}:	${OBJS}
 			ar rcs ${NAME} ${OBJS} ${HEADER}
-			${MAKE} ${LIBFT_DIR}
+			${MAKE} -C ${LIBFT_DIR}
 
 all:	${NAME}
 
 clean:
-		${MAKE} ${LIBFT_DIR} clean
+		${MAKE} -C ${LIBFT_DIR} clean
 		${RM} ${OBJS}
 
 fclean: clean
-		${MAKE} ${LIBFT_DIR} fclean
 		${RM} ${NAME}
 
 re:	fclean ${NAME}
