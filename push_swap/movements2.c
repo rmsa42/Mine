@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:19:18 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/20 14:41:35 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/22 00:10:29 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,10 @@ void	rotate_b(Node **b)
 
 void	rrotate_a(Node **a)
 {
-	Node	*head;
 	Node	*temp;
 
 	if (a != NULL)
 	{
-		head = *a;
 		temp = *a;
 		while(temp->next->next != NULL)
 			temp = temp->next;
@@ -71,12 +69,10 @@ void	rrotate_a(Node **a)
 
 void	rrotate_b(Node **b)
 {
-	Node	*head;
 	Node	*temp;
 
 	if (b != NULL)
 	{
-		head = *b;
 		temp = *b;
 		while(temp->next->next != NULL)
 			temp = temp->next;

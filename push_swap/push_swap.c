@@ -3,30 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/21 17:02:25 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/22 00:44:26 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
+void	statements(Node **a, Node **b, Node *temp)
+{
+
+}
+
 void	sort_five(Node **a, Node **b)
 {
 	Node	*temp;
 	int		i;
 	
-	temp = *a;
 	i = 0;
 	while (i < 2)
 	{
 		push_b(b, a, (*a)->data);
-		temp = *a;
 		i++;
 	}
 	sort_three(a);
+	temp = *a;
+	statements(a, b, temp);
+	i = 0;
+	temp = *a;
 }
 
 int	main(int argc, char *argv[])
@@ -36,20 +43,24 @@ int	main(int argc, char *argv[])
 	
 
 	a = stack_init(argc, argv);
-	/* sort_two(&a);
-	sort_three(&a); */
+	/* sort_two(&a); */
+	/* sort_three(&a); */
 	sort_five(&a, &b);
 	printf("\n");
 	while (a != NULL)
 	{
-		printf("%d\n", a->data);
-		a = a->next;
+		if (a != NULL)
+		{
+			printf("%d", a->data);
+			a = a->next;
+		}
+		if (b != NULL)
+		{
+			printf("   %d", b->data);
+			b = b->next;	
+		}
+		if (a == NULL)
+			printf("\n-\na\n");
+		printf("\n");
 	}
-	printf("-\na\n\n");
-	while (b != NULL)
-	{
-		printf("%d\n", b->data);
-		b = b->next;
-	}
-	printf("-\nb\n");
 }
