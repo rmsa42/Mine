@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/22 00:44:26 by rui              ###   ########.fr       */
+/*   Updated: 2023/06/22 15:15:44 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	statements(Node **a, Node **b, Node *temp)
-{
-
-}
-
-void	sort_five(Node **a, Node **b)
+void	sort_hundred(Node **a, Node **b)
 {
 	Node	*temp;
+	int		target;
 	int		i;
-	
+	int		size;
+
 	i = 0;
-	while (i < 2)
+	size = ft_lstsize_ps(*a);
+	temp = *a;
+	while (i != size/2)
 	{
-		push_b(b, a, (*a)->data);
+		target = temp->data;
+		temp = temp->next;
 		i++;
 	}
-	sort_three(a);
-	temp = *a;
-	statements(a, b, temp);
-	i = 0;
-	temp = *a;
 }
 
 int	main(int argc, char *argv[])
@@ -43,24 +38,27 @@ int	main(int argc, char *argv[])
 	
 
 	a = stack_init(argc, argv);
-	/* sort_two(&a); */
-	/* sort_three(&a); */
-	sort_five(&a, &b);
+	if (argc == 3)
+		sort_two(&a);
+	if (argc == 4)
+		sort_three(&a);
+	else if (argc == 5)
+		sort_four(&a, &b);
+	else if (argc == 6)
+		sort_five(&a, &b);
+	else
+		sort_hundred(&a, &b);
 	printf("\n");
 	while (a != NULL)
 	{
-		if (a != NULL)
-		{
-			printf("%d", a->data);
-			a = a->next;
-		}
-		if (b != NULL)
-		{
-			printf("   %d", b->data);
-			b = b->next;	
-		}
-		if (a == NULL)
-			printf("\n-\na\n");
-		printf("\n");
+		printf("%d\n", a->data);
+		a = a->next;
 	}
+	printf("-\na\n\n");
+	while (b != NULL)
+	{
+		printf("%d\n", b->data);
+		b = b->next;
+	}
+	printf("-\nb\n\n");
 }

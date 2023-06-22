@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:04:31 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/20 14:18:19 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/22 13:28:37 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	ft_lstsize_ps(Node *a)
 
 Node	*stack_init(int argc, char *argv[])
 {
-	int i;
 	Node *a = NULL;
 	Node *head_a = NULL;
+	int i;
 
 	i = 1;
 	a = create_node(ft_atoi(argv[i]));

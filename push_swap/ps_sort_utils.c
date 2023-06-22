@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:20:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/21 14:44:42 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/22 13:11:57 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ int	min_t(Node *a)
 		templ = templ->next;
 	}
 	return (min);
+}
+
+int	check(Node *a)
+{
+	while ((a->data <= a->next->data) && a != NULL)
+	{
+		a = a->next;
+		if (a->next == NULL)
+			break;
+	}
+	if (a->next == NULL)
+		return (0);
+	else
+		return (1);
 }
 
 void	sort_two(Node **a)

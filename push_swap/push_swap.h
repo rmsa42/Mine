@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:51:11 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/20 16:29:56 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/22 13:14:01 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct node
 
 int		ft_lstsize_ps(Node *a);
 int		min_t(Node *a);
+int		check(Node *a);
 Node	*create_node(int dt);
 Node	*stack_init(int argc, char *argv[]);
 Node	*swap_a(Node *a);
@@ -36,5 +37,7 @@ void	rr(Node **a, Node **b);
 void	rrr(Node **a, Node **b);
 void	sort_two(Node **a);
 void	sort_three(Node **a);
+int		sort_four(Node **a, Node **b);
+int		sort_five(Node **a, Node **b);
 
 #endif
