@@ -6,29 +6,43 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/22 15:15:44 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:35:12 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
+int	max(Node *list)
+{
+	int	max;
+	
+	max = list->data;
+	while (list != NULL)
+	{
+		if (list->data > max)
+			max = list->data;
+		list = list->next;
+	}
+	return (max);
+}
+
 void	sort_hundred(Node **a, Node **b)
 {
-	Node	*temp;
-	int		target;
-	int		i;
-	int		size;
-
-	i = 0;
-	size = ft_lstsize_ps(*a);
-	temp = *a;
-	while (i != size/2)
-	{
-		target = temp->data;
-		temp = temp->next;
-		i++;
+	Node	*temp_a;
+	Node	*temp_b;
+	int i = 0;
+	int nbr_mv;
+	
+	if (i == 0)
+	{	
+		push_b(b, a, (*a)->data);
+		push_b(b, a, (*a)->data);
+		if ((*b)->data < (*b)->next->data)
+			swap_b(*b);
+		push_b(b, a, (*a)->data);
 	}
+	
 }
 
 int	main(int argc, char *argv[])

@@ -6,28 +6,23 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:20:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/22 13:11:57 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/26 14:27:24 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	min_t(Node *a)
+int	min_t(Node *list)
 {
-	Node	*templ;
-	int		min;
-
-	templ = a;
-	min = a->data;
-	while (templ != NULL)
+	int	min;
+	
+	min = list->data;
+	while (list != NULL)
 	{
-		if (templ->data < min)
-		{
-			min = templ->data;
-			templ = a;
-		}
-		templ = templ->next;
+		if (list->data < min)
+			min = list->data;
+		list = list->next;
 	}
 	return (min);
 }
