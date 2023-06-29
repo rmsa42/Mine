@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   movements2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:19:18 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/22 00:10:29 by rui              ###   ########.fr       */
+/*   Updated: 2023/06/29 15:22:20 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	rotate_a(Node **a)
+void	rotate_a(Node **a, int i)
 {
 	Node	*temp;
 	Node	*head;
@@ -29,10 +29,11 @@ void	rotate_a(Node **a)
 		temp = temp->next;
 		temp->next = NULL;
 	}
-	ft_printf("ra\n");
+	if (i != 1)
+		ft_printf("ra\n");
 }
 
-void	rotate_b(Node **b)
+void	rotate_b(Node **b, int i)
 {
 	Node	*temp;
 	Node	*head;
@@ -48,13 +49,14 @@ void	rotate_b(Node **b)
 		temp = temp->next;
 		temp->next = NULL;
 	}
-	ft_printf("rb\n");
+	if (i != 1)
+		ft_printf("rb\n");
 }
 
-void	rrotate_a(Node **a)
+void	rrotate_a(Node **a, int i)
 {
 	Node	*temp;
-
+	
 	if (a != NULL)
 	{
 		temp = *a;
@@ -64,10 +66,11 @@ void	rrotate_a(Node **a)
 		*a = temp->next;
 		temp->next = NULL;
 	}
-	ft_printf("rra\n");
+	if (i != 1)
+		ft_printf("rra\n");
 }
 
-void	rrotate_b(Node **b)
+void	rrotate_b(Node **b, int i)
 {
 	Node	*temp;
 
@@ -80,12 +83,16 @@ void	rrotate_b(Node **b)
 		*b = temp->next;
 		temp->next = NULL;
 	}
-	ft_printf("rrb\n");
+	if (i != 0)
+		ft_printf("rrb\n");
 }
 
 void	rr(Node **a, Node **b)
 {
-	rotate_a(a);
-	rotate_b(b);
-	ft_printf("rrr\n");
+	int i;
+
+	i = 1;
+	rotate_a(a, i);
+	rotate_b(b, i);
+	ft_printf("rr\n");
 }

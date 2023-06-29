@@ -6,43 +6,42 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/26 16:35:12 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:08:06 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	max(Node *list)
-{
-	int	max;
-	
-	max = list->data;
-	while (list != NULL)
-	{
-		if (list->data > max)
-			max = list->data;
-		list = list->next;
-	}
-	return (max);
-}
 
-void	sort_hundred(Node **a, Node **b)
+int	check_dup(Node *a)
 {
-	Node	*temp_a;
-	Node	*temp_b;
-	int i = 0;
-	int nbr_mv;
+	Node *temp_a;
+	Node *temp_a2;
+	int i;
+	int j;
 	
-	if (i == 0)
-	{	
-		push_b(b, a, (*a)->data);
-		push_b(b, a, (*a)->data);
-		if ((*b)->data < (*b)->next->data)
-			swap_b(*b);
-		push_b(b, a, (*a)->data);
+	i = 0;
+	temp_a = a;
+	while (temp_a != NULL)
+	{
+		j = 0;
+		temp_a2 = a;
+		while (temp_a2 != NULL)
+		{
+			if ((temp_a2->data == temp_a->data) && (i != j))
+			{
+				write(2, "Error", 5);
+				write(2, "\n", 1);	
+				return (1);
+			}
+			j++;
+			temp_a2 = temp_a2->next;
+		}
+		i++;
+		temp_a = temp_a->next;
 	}
-	
+	return (0);
 }
 
 int	main(int argc, char *argv[])
@@ -50,8 +49,11 @@ int	main(int argc, char *argv[])
 	Node *a = NULL;
 	Node *b = NULL;
 	
-
 	a = stack_init(argc, argv);
+	if (check_dup(a) == 1)
+		return (0);
+	if (argc == 1)
+		return (0);
 	if (argc == 3)
 		sort_two(&a);
 	if (argc == 4)
@@ -62,7 +64,7 @@ int	main(int argc, char *argv[])
 		sort_five(&a, &b);
 	else
 		sort_hundred(&a, &b);
-	printf("\n");
+	/* printf("\n");
 	while (a != NULL)
 	{
 		printf("%d\n", a->data);
@@ -74,5 +76,5 @@ int	main(int argc, char *argv[])
 		printf("%d\n", b->data);
 		b = b->next;
 	}
-	printf("-\nb\n\n");
+	printf("-\nb\n\n"); */
 }

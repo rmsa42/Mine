@@ -6,14 +6,28 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:20:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/26 14:27:24 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:35:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-int	min_t(Node *list)
+int	max(Node *list)
+{
+	int	max;
+	
+	max = list->data;
+	while (list != NULL)
+	{
+		if (list->data > max)
+			max = list->data;
+		list = list->next;
+	}
+	return (max);
+}
+
+int	min(Node *list)
 {
 	int	min;
 	
@@ -27,7 +41,7 @@ int	min_t(Node *list)
 	return (min);
 }
 
-int	check(Node *a)
+int	check_sort(Node *a)
 {
 	while ((a->data <= a->next->data) && a != NULL)
 	{
@@ -43,76 +57,43 @@ int	check(Node *a)
 
 void	sort_two(Node **a)
 {
+	int j;
+
+	j = 0;
 	if ((*a)->data > (*a)->next->data)
-		swap_a(*a);
+		swap_a(*a, j);
 }
 
 void	sort_three(Node **a)
 {
-	int	min;
-
-	min = min_t(*a);
-	if ((*a)->data == min)
+	int	min_t;
+	int j;
+	
+	j = 0;
+	min_t = min(*a);
+	if ((*a)->data == min_t)
 	{
 		if ((*a)->next->next->data < (*a)->next->data)
 		{
-			swap_a(*a);
-			rotate_a(a);
+			swap_a(*a, j);
+			rotate_a(a, j);
 		}
 	}
-	if ((*a)->next->data == min)
+	if ((*a)->next->data == min_t)
 	{
 		if ((*a)->data < (*a)->next->next->data)
-			swap_a(*a);
+			swap_a(*a, j);
 		else
-			rotate_a(a);
+			rotate_a(a, j);
 	}
-	if ((*a)->next->next->data == min)
+	if ((*a)->next->next->data == min_t)
 	{
 		if ((*a)->data < (*a)->next->data)
-			rrotate_a(a);
+			rrotate_a(a, j);
 		else
 		{
-			swap_a(*a);
-			rrotate_a(a);
+			swap_a(*a, j);
+			rrotate_a(a, j);
 		}
 	}
 }
-
-/* int	sort(Node **a, Node **b)
-{
-	Node	*temp;
-	int		min;
-	int		min_s;
-	int		i;
-
-	if (*a == NULL)
-		return (0);
-	i = 1;
-	temp = *a;
-	min = (*a)->data;
-	while (temp != NULL)
-	{
-		if (temp->data < min)
-		{
-			min = temp->data;
-			temp = *a;
-			min_s = i;
-		}
-		temp = temp->next;
-		i++;
-	}
-	temp = *a;
-	while (temp->data != min)
-	{
-		if (min_s < (i/2))
-			rotate_a(a);
-		else
-			rrotate_a(a);
-		temp = *a;
-	}
-	push_b(b, a, (*a)->data);
-	sort(a, b);
-	push_a(b, a, (*b)->data);
-	return (1);
-} */

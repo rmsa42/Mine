@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:52:05 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/20 14:41:41 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:22:02 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 void	rrr(Node **a, Node **b)
 {
-	rrotate_a(a);
-	rrotate_b(b);
+	int i;
+	
+	i = 1;
+	rrotate_a(a, i);
+	rrotate_b(b, i);
 	ft_printf("rrr\n");
 }

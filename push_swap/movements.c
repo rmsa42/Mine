@@ -6,14 +6,14 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:25:10 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/20 14:46:38 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:36:16 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-Node	*swap_a(Node *a)
+Node	*swap_a(Node *a, int i)
 {
 	int	temp;
 
@@ -25,12 +25,13 @@ Node	*swap_a(Node *a)
 		temp = a->data;
 		a->data = a->next->data;
 		a->next->data = temp;
-		ft_printf("sa\n");
+		if (i != 1)
+			ft_printf("sa\n");
 		return (a);
 	}
 }
 
-Node	*swap_b(Node *b)
+Node	*swap_b(Node *b, int i)
 {
 	int	temp;
 
@@ -42,15 +43,19 @@ Node	*swap_b(Node *b)
 		temp = b->data;
 		b->data = b->next->data;
 		b->next->data = temp;
-		ft_printf("sb\n");
+		if (i != 1)
+			ft_printf("sb\n");
 		return (b);
 	}
 }
 
 void	ss(Node *a, Node *b)
 {
-	swap_a(a);
-	swap_b(b);
+	int i;
+
+	i = 1;
+	swap_a(a, i);
+	swap_b(b, i);
 	ft_printf("ss\n");
 }
 
