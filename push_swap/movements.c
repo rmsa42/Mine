@@ -6,14 +6,14 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:25:10 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/29 15:36:16 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:40:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-Node	*swap_a(Node *a, int i)
+t_node	*swap_a(t_node *a, int i)
 {
 	int	temp;
 
@@ -31,7 +31,7 @@ Node	*swap_a(Node *a, int i)
 	}
 }
 
-Node	*swap_b(Node *b, int i)
+t_node	*swap_b(t_node *b, int i)
 {
 	int	temp;
 
@@ -49,9 +49,9 @@ Node	*swap_b(Node *b, int i)
 	}
 }
 
-void	ss(Node *a, Node *b)
+void	ss(t_node *a, t_node *b)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	swap_a(a, i);
@@ -59,10 +59,10 @@ void	ss(Node *a, Node *b)
 	ft_printf("ss\n");
 }
 
-void	push_b(Node **b, Node **a, int data_a)
+void	push_b(t_node **b, t_node **a, int data_a)
 {
-	Node	*new;
-	Node	*temp;
+	t_node	*new;
+	t_node	*temp;
 
 	new = NULL;
 	if (*b == NULL)
@@ -81,10 +81,10 @@ void	push_b(Node **b, Node **a, int data_a)
 	ft_printf("pb\n");
 }
 
-void	push_a(Node **b, Node **a, int data_b)
+void	push_a(t_node **b, t_node **a, int data_b)
 {
-	Node	*new;
-	Node	*temp;
+	t_node	*new;
+	t_node	*temp;
 
 	new = NULL;
 	if (*a == NULL)

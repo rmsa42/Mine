@@ -6,23 +6,23 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 10:56:36 by rumachad          #+#    #+#              #
-#    Updated: 2023/06/29 15:17:35 by rumachad         ###   ########.fr        #
+#    Updated: 2023/06/30 15:37:26 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 SRC = push_swap.c movements.c movements2.c \
 		movements3.c ps_list_utils.c ps_sort_utils.c \
-		ps_sort_five_utils.c ps_sort_big_utils.c ps_strat.c
+		ps_sort_five.c ps_sort_big.c ps_strat.c \
+		ps_sort_three.c ps_strat2.c
 LIBFT_DIR = libft
-LIBFT_OBJS = 
 MAKE = make
 OBJS = ${SRC:.c=.o}
 HEADER = push_swap.h
 INCLUDE = -I include
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 .c.o:
 		${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o}
 
@@ -37,6 +37,7 @@ clean:
 		${RM} ${OBJS}
 
 fclean: clean
+		${MAKE} -C ${LIBFT_DIR} fclean
 		${RM} ${NAME}
 
 re:	fclean ${NAME}

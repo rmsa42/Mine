@@ -6,17 +6,17 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:52:05 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/29 14:22:02 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:38:46 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	rrr(Node **a, Node **b)
+void	rrr(t_node **a, t_node **b)
 {
-	int i;
-	
+	int	i;
+
 	i = 1;
 	rrotate_a(a, i);
 	rrotate_b(b, i);

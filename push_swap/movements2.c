@@ -6,17 +6,17 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 12:19:18 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/29 15:22:20 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:38:40 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	rotate_a(Node **a, int i)
+void	rotate_a(t_node **a, int i)
 {
-	Node	*temp;
-	Node	*head;
+	t_node	*temp;
+	t_node	*head;
 
 	if (a != NULL)
 	{
@@ -33,10 +33,10 @@ void	rotate_a(Node **a, int i)
 		ft_printf("ra\n");
 }
 
-void	rotate_b(Node **b, int i)
+void	rotate_b(t_node **b, int i)
 {
-	Node	*temp;
-	Node	*head;
+	t_node	*temp;
+	t_node	*head;
 
 	if (b != NULL)
 	{
@@ -53,14 +53,14 @@ void	rotate_b(Node **b, int i)
 		ft_printf("rb\n");
 }
 
-void	rrotate_a(Node **a, int i)
+void	rrotate_a(t_node **a, int i)
 {
-	Node	*temp;
-	
+	t_node	*temp;
+
 	if (a != NULL)
 	{
 		temp = *a;
-		while(temp->next->next != NULL)
+		while (temp->next->next != NULL)
 			temp = temp->next;
 		temp->next->next = *a;
 		*a = temp->next;
@@ -70,26 +70,26 @@ void	rrotate_a(Node **a, int i)
 		ft_printf("rra\n");
 }
 
-void	rrotate_b(Node **b, int i)
+void	rrotate_b(t_node **b, int i)
 {
-	Node	*temp;
+	t_node	*temp;
 
 	if (b != NULL)
 	{
 		temp = *b;
-		while(temp->next->next != NULL)
+		while (temp->next->next != NULL)
 			temp = temp->next;
 		temp->next->next = *b;
 		*b = temp->next;
 		temp->next = NULL;
 	}
-	if (i != 0)
+	if (i != 1)
 		ft_printf("rrb\n");
 }
 
-void	rr(Node **a, Node **b)
+void	rr(t_node **a, t_node **b)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	rotate_a(a, i);

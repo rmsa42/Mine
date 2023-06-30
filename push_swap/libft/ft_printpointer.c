@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 10:04:16 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/07 15:39:35 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:39:38 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ int	ft_printpointer_start(unsigned long nbr)
 	write(1, "0x", 2);
 	return (ft_printpointer(nbr));
 }
-

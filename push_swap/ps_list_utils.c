@@ -6,18 +6,18 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:04:31 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/28 12:51:24 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/06/30 14:38:32 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-Node *create_node(int dt)
+t_node	*create_node(int dt)
 {
-	Node *node;
-	
-	node = malloc(sizeof(Node));
+	t_node	*node;
+
+	node = malloc(sizeof(t_node));
 	if (node == NULL)
 		return (NULL);
 	node->data = dt;
@@ -25,7 +25,7 @@ Node *create_node(int dt)
 	return (node);
 }
 
-int	check_position(Node *list, int target)
+int	check_position(t_node *list, int target)
 {
 	int	i;
 
@@ -38,10 +38,10 @@ int	check_position(Node *list, int target)
 	return (i);
 }
 
-int	ft_lstsize_ps(Node *a)
+int	ft_lstsize_ps(t_node *a)
 {
 	int	i;
-	
+
 	i = 0;
 	if (a == NULL)
 		return (0);
@@ -56,13 +56,15 @@ int	ft_lstsize_ps(Node *a)
 	}
 }
 
-Node	*stack_init(int argc, char *argv[])
+t_node	*stack_init(int argc, char *argv[])
 {
-	Node *a = NULL;
-	Node *head_a = NULL;
-	int i;
+	t_node	*a;
+	t_node	*head_a;
+	int		i;
 
 	i = 1;
+	a = NULL;
+	head_a = NULL;
 	a = create_node(ft_atoi(argv[i]));
 	i++;
 	head_a = a;
