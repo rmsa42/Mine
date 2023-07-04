@@ -1,18 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ps_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 12:02:14 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 11:04:19 by rumachad         ###   ########.fr       */
+/*   Created: 2023/07/04 11:00:02 by rumachad          #+#    #+#             */
+/*   Updated: 2023/07/04 11:42:28 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
+#include "push_swap.h"
 
-int	ft_atoi(const char *str)
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void	check_args(char *argv[])
+{
+	int	i;
+	int	k;
+
+	i = 1;
+	k = 0;
+	while (argv[i])
+	{
+		k = 0;
+		while (argv[i][k])
+		{
+			if ((argv[i][k] >= '0' && argv[i][k] <= '9') || argv[i][k] == '-')
+				k++;
+			else
+				return (error());
+		}
+		i++;
+	}
+}
+
+void	check_dup(t_node *a)
+{
+	t_node	*temp_a;
+	t_node	*temp_a2;
+	int		i;
+	int		j;
+
+	i = 0;
+	temp_a = a;
+	while (temp_a != NULL)
+	{
+		j = 0;
+		temp_a2 = a;
+		while (temp_a2 != NULL)
+		{
+			if ((temp_a2->data == temp_a->data) && (i != j))
+				return (error());
+			j++;
+			temp_a2 = temp_a2->next;
+		}
+		i++;
+		temp_a = temp_a->next;
+	}
+}
+
+int	ft_atoi_2(const char *str)
 {
 	int			i;
 	long int	c;
@@ -35,16 +88,6 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if ((c * a) > 2147483647 || (c * a) < -2147483648)
-		return (0);
-	else
-		return (c * a);
+		error();
+	return (c * a);
 }
-
-/* int	main()
-{
-	char str[] = "2147483648";
-	
-	printf("%d\n", ft_atoi(str));
-	if (ft_atoi(str) > 2147483647)
-		printf("%d\n", ft_atoi(str));
-} */

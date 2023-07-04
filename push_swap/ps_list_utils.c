@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:04:31 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/30 14:38:32 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/04 11:43:56 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,26 @@ t_node	*stack_init(int argc, char *argv[])
 	i = 1;
 	a = NULL;
 	head_a = NULL;
-	a = create_node(ft_atoi(argv[i]));
+	a = create_node(ft_atoi_2(argv[i]));
 	i++;
 	head_a = a;
 	while (i < argc)
 	{
-		a->next = create_node(ft_atoi(argv[i]));
+		a->next = create_node(ft_atoi_2(argv[i]));
 		a = a->next;
 		i++;
 	}
 	return (head_a);
+}
+
+void	free_list(t_node **lst)
+{
+	t_node	*temp;
+
+	while (*lst != NULL)
+	{
+		temp = *lst;
+		*lst = (*lst)->next;
+		free(temp);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 12:29:43 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/30 14:38:09 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:54:49 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,13 @@ int	sort_four(t_node **a, t_node **b)
 	return (1);
 }
 
-int	sort_five(t_node **a, t_node **b)
+void	sort_five(t_node **a, t_node **b)
 {
 	int		min;
 	int		i;
 
 	if (check_sort(*a) == 0)
-		return (0);
+		exit(1);
 	min = 0;
 	i = target(a, min);
 	top_five(a, b, i);
@@ -104,5 +104,4 @@ int	sort_five(t_node **a, t_node **b)
 	sort_three(a);
 	push_a(b, a, (*b)->data);
 	push_a(b, a, (*b)->data);
-	return (1);
 }
