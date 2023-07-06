@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:00:02 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 11:42:28 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:37:17 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check_args(char *argv[])
 			if ((argv[i][k] >= '0' && argv[i][k] <= '9') || argv[i][k] == '-')
 				k++;
 			else
-				return (error());
+				error();
 		}
 		i++;
 	}
@@ -56,7 +56,10 @@ void	check_dup(t_node *a)
 		while (temp_a2 != NULL)
 		{
 			if ((temp_a2->data == temp_a->data) && (i != j))
-				return (error());
+			{
+				free_list(&a);
+				error();
+			}
 			j++;
 			temp_a2 = temp_a2->next;
 		}
@@ -88,6 +91,6 @@ int	ft_atoi_2(const char *str)
 		i++;
 	}
 	if ((c * a) > 2147483647 || (c * a) < -2147483648)
-		error();
+		return (c);
 	return (c * a);
 }

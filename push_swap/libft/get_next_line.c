@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:05:47 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/07 15:41:45 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:19:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	*readed(char *nw_line, int fd)
 	if (buffer == NULL)
 		return (NULL);
 	size = 1;
-	while (ft_strchr(nw_line, '\n') == NULL && size != 0)
+	while (ft_strchr_get(nw_line, '\n') == NULL && size != 0)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size == -1)
@@ -87,7 +87,7 @@ char	*readed(char *nw_line, int fd)
 			return (NULL);
 		}
 		buffer[size] = '\0';
-		nw_line = ft_strjoin(nw_line, buffer);
+		nw_line = ft_strjoin_get(nw_line, buffer);
 	}
 	free(buffer);
 	return (nw_line);

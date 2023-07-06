@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:25:10 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/30 14:40:14 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:30:26 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,46 +59,52 @@ void	ss(t_node *a, t_node *b)
 	ft_printf("ss\n");
 }
 
-void	push_b(t_node **b, t_node **a, int data_a)
+void	push_b(t_node **b, t_node **a, int i)
 {
 	t_node	*new;
 	t_node	*temp;
 
+	if (!(*a))
+		return ;
 	new = NULL;
 	if (*b == NULL)
 	{
-		*b = create_node(data_a);
+		*b = create_node((*a)->data);
 	}
 	else
 	{
-		new = create_node(data_a);
+		new = create_node((*a)->data);
 		new->next = *b;
 		*b = new;
 	}
 	temp = *a;
 	*a = (*a)->next;
 	free(temp);
-	ft_printf("pb\n");
+	if (i != 1)
+		ft_printf("pb\n");
 }
 
-void	push_a(t_node **b, t_node **a, int data_b)
+void	push_a(t_node **b, t_node **a, int i)
 {
 	t_node	*new;
 	t_node	*temp;
 
+	if (!(*b))
+		return ;
 	new = NULL;
 	if (*a == NULL)
 	{
-		*a = create_node(data_b);
+		*a = create_node((*b)->data);
 	}
 	else
 	{
-		new = create_node(data_b);
+		new = create_node((*b)->data);
 		new->next = *a;
 		*a = new;
 	}
 	temp = *b;
 	*b = (*b)->next;
 	free(temp);
-	ft_printf("pa\n");
+	if (i != 1)
+		ft_printf("pa\n");
 }

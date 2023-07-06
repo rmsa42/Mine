@@ -6,14 +6,14 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:19:21 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 16:26:55 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:31:41 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	sort2(t_node **a, t_node **b, int size)
+void	sort_min_max(t_node **a, t_node **b, int size)
 {
 	int	position;
 	int	j;
@@ -27,10 +27,10 @@ void	sort2(t_node **a, t_node **b, int size)
 		else
 			rotate_a(a, j);
 	}
-	push_a(b, a, (*b)->data);
+	push_a(b, a, 0);
 }
 
-void	sort3(t_node **a, t_node **b, int size)
+void	sort_btw_min_max(t_node **a, t_node **b, int size)
 {
 	t_node	*temp_a;
 	int		position;
@@ -54,22 +54,19 @@ void	sort3(t_node **a, t_node **b, int size)
 		else
 			rotate_a(a, j);
 	}
-	push_a(b, a, (*b)->data);
+	push_a(b, a, 0);
 }
 
-void	sorting_2(t_node **a, t_node **b)
+void	sort2(t_node **a, t_node **b)
 {
-	t_node	*temp_b;
 	int		size;
 
-	temp_b = *b;
 	while (*b != NULL)
 	{
-		temp_b = *b;
 		size = ft_lstsize_ps(*a);
-		if (temp_b->data > max(*a) || temp_b->data < min(*a))
-			sort2(a, b, size);
-		else if (temp_b->data < max(*a) && temp_b->data > min(*a))
-			sort3(a, b, size);
+		if ((*b)->data > max(*a) || (*b)->data < min(*a))
+			sort_min_max(a, b, size);
+		else if ((*b)->data < max(*a) && (*b)->data > min(*a))
+			sort_btw_min_max(a, b, size);
 	}
 }

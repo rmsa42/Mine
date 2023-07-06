@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 12:29:43 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 14:54:49 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:17:25 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ void	top_four(t_node **a, t_node **b, int i)
 
 	j = 0;
 	if (i == 0)
-		push_b(b, a, (*a)->data);
+		push_b(b, a, 0);
 	else if (i == 1)
 	{
 		rotate_a(a, j);
-		push_b(b, a, (*a)->data);
+		push_b(b, a, 0);
 	}
 	else if (i == 2)
 	{
 		rotate_a(a, j);
 		rotate_a(a, j);
-		push_b(b, a, (*a)->data);
+		push_b(b, a, 0);
 	}
 	else if (i == 3)
 	{
 		rrotate_a(a, j);
-		push_b(b, a, (*a)->data);
+		push_b(b, a, 0);
 	}
 }
 
@@ -49,12 +49,12 @@ void	top_five(t_node **a, t_node **b, int i)
 	{
 		rrotate_a(a, j);
 		rrotate_a(a, j);
-		push_b(b, a, (*a)->data);
+		push_b(b, a, 0);
 	}
 	else if (i == 4)
 	{
 		rrotate_a(a, j);
-		push_b(b, a, (*a)->data);
+		push_b(b, a, 0);
 	}
 }
 
@@ -74,19 +74,18 @@ int	target(t_node **a, int min_t)
 	return (i);
 }
 
-int	sort_four(t_node **a, t_node **b)
+void	sort_four(t_node **a, t_node **b)
 {
 	int	i;
 	int	min;
 
 	if (check_sort(*a) == 0)
-		return (0);
+		return ;
 	min = 0;
 	i = target(a, min);
 	top_four(a, b, i);
 	sort_three(a);
-	push_a(b, a, (*b)->data);
-	return (1);
+	push_a(b, a, 0);
 }
 
 void	sort_five(t_node **a, t_node **b)
@@ -95,13 +94,13 @@ void	sort_five(t_node **a, t_node **b)
 	int		i;
 
 	if (check_sort(*a) == 0)
-		exit(1);
+		return ;
 	min = 0;
 	i = target(a, min);
 	top_five(a, b, i);
 	i = target(a, min);
 	top_four(a, b, i);
 	sort_three(a);
-	push_a(b, a, (*b)->data);
-	push_a(b, a, (*b)->data);
+	push_a(b, a, 0);
+	push_a(b, a, 0);
 }

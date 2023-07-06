@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:10:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 15:59:44 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:11:31 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	min_max(t_node *b, int rotations_a, int size_a)
 	nbr = max(b);
 	size_b = ft_lstsize_ps(b);
 	rotations_b = check_position(b, nbr);
-	return (cheaper_nbr(rotations_a, rotations_b, size_a, size_b));
+	return (mv_calcs(rotations_a, rotations_b, size_a, size_b));
 }
 
 int	btw_min_max(t_node *b, int data_a, int rotations_a, int size_a)
@@ -45,10 +45,10 @@ int	btw_min_max(t_node *b, int data_a, int rotations_a, int size_a)
 		temp_b = temp_b->next;
 	}
 	rotations_b = check_position(b, nbr);
-	return (cheaper_nbr(rotations_a, rotations_b, size_a, size_b));
+	return (mv_calcs(rotations_a, rotations_b, size_a, size_b));
 }
 
-int	nbr2move(t_node *a, t_node *b, int size_a)
+int	a_nbr2move(t_node *a, t_node *b, int size_a)
 {
 	t_node	*temp_a;
 	int		rotations_a;
@@ -56,6 +56,7 @@ int	nbr2move(t_node *a, t_node *b, int size_a)
 	int		moves;
 	int		cheaper;
 
+	cheaper = 0;
 	temp_a = a;
 	rotations_a = 0;
 	while (temp_a != NULL)
@@ -75,7 +76,7 @@ int	nbr2move(t_node *a, t_node *b, int size_a)
 	return (nbr2return);
 }
 
-int	b_nbr2top(t_node *b, int data_a)
+int	b_nbr2move(t_node *b, int data_a)
 {
 	t_node	*temp_b;
 	int		target;

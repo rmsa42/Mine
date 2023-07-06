@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:51:11 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 14:54:58 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 16:33:56 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		min(t_node *list);
 int		max(t_node *list);
 t_node	*swap_a(t_node *a, int i);
 t_node	*swap_b(t_node *b, int i);
-void	push_b(t_node **b, t_node **a, int data_a);
-void	push_a(t_node **b, t_node **a, int data_b);
+void	push_b(t_node **b, t_node **a, int i);
+void	push_a(t_node **b, t_node **a, int i);
 void	rotate_a(t_node **a, int i);
 void	rotate_b(t_node **b, int i);
 void	rrotate_a(t_node **a, int i);
@@ -44,13 +44,13 @@ void	rr(t_node **a, t_node **b);
 void	rrr(t_node **a, t_node **b);
 void	sort_two(t_node **a);
 void	sort_three(t_node **a);
-int		sort_four(t_node **a, t_node **b);
+void	sort_four(t_node **a, t_node **b);
 void	sort_five(t_node **a, t_node **b);
 void	sort_hundred(t_node **a, t_node **b);
-void	sort_nbr(t_node **a, t_node **b, int nbr2sort, int target);
-void	sorting_2(t_node **a, t_node **b);
-int		nbr2move(t_node *a, t_node *b, int size_a);
-int		b_nbr2top(t_node *b, int data_a);
-int		cheaper_nbr(int rotations_a, int rotations_b, int size_a, int size_b);
+void	sort(t_node **a, t_node **b, int nbr2sort, int target);
+void	sort2(t_node **a, t_node **b);
+int		mv_calcs(int rotations_a, int rotations_b, int size_a, int size_b);
+int		a_nbr2move(t_node *a, t_node *b, int size_a);
+int		b_nbr2move(t_node *b, int data_a);
 
 #endif

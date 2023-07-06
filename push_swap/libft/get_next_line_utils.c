@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 15:37:19 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/07 15:41:37 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:18:56 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr_get(const char *str, int c)
 {
 	if (!str)
 		return (NULL);

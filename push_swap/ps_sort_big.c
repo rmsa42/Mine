@@ -6,82 +6,50 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:14:34 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/04 17:01:51 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:32:16 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	put_in_position(t_node **a, t_node **b, int nbr2sort, int target)
+void	put_all_a(t_node **a)
 {
 	int	j;
-	int	rotations_a;
-	int	rotations_b;
-	int	size_a;
-	int	size_b;
+	int	size;
+	int	position;
 
 	j = 0;
-	size_a = ft_lstsize_ps(*a);
-	size_b = ft_lstsize_ps(*b);
-	rotations_a = check_position(*a, nbr2sort);
-	rotations_b = check_position(*b, target);
-	while ((*a)->data != nbr2sort && (*b)->data != target)
+	position = check_position(*a, min(*a));
+	size = ft_lstsize_ps(*a);
+	while ((*a)->data != min(*a))
 	{
-		if (rotations_a > size_a / 2 && rotations_b > size_b / 2)
-			rrr(a, b);
-		else if (rotations_a < size_a / 2 && rotations_b > size_b / 2)
-			rotate_a(a, j);
-		else if (rotations_b < size_b / 2 && rotations_a > size_a / 2)
-			rotate_b(b, j);
-		else
-			rr(a, b);
-	}
-}
-
-void	sort1(t_node **b, int target, int rotations_b, int size_b)
-{
-	int	j;
-
-	j = 0;
-	while ((*b)->data != target)
-	{
-		if (rotations_b > size_b / 2)
-			rrotate_b(b, j);
-		else
-			rotate_b(b, j);
-	}
-}
-
-void	sort4(t_node **a, int nbr2sort, int rotations_a, int size_a)
-{
-	int	j;
-
-	j = 0;
-	while ((*a)->data != nbr2sort)
-	{
-		if (rotations_a > size_a / 2)
+		if (position > size / 2)
 			rrotate_a(a, j);
 		else
 			rotate_a(a, j);
 	}
 }
 
-void	sort_nbr(t_node **a, t_node **b, int nbr2sort, int target)
+void	sort_hundred(t_node **a, t_node **b)
 {
-	int	rotations_a;
-	int	rotations_b;
 	int	size_a;
-	int	size_b;
+	int	a_nbr2sort;
+	int	b_nbr2sort;
 
+	if (check_sort(*a) == 0)
+		exit(1);
+	push_b(b, a, 0);
+	push_b(b, a, 0);
 	size_a = ft_lstsize_ps(*a);
-	size_b = ft_lstsize_ps(*b);
-	rotations_a = check_position(*a, nbr2sort);
-	rotations_b = check_position(*b, target);
-	put_in_position(a, b, nbr2sort, target);
-	if ((*a)->data == nbr2sort && (*b)->data != target)
-		sort1(b, target, rotations_b, size_b);
-	else if ((*b)->data == target && (*a)->data != nbr2sort)
-		sort4(a, nbr2sort, rotations_a, size_a);
-	push_b(b, a, (*a)->data);
+	while (size_a > 4)
+	{
+		size_a = ft_lstsize_ps(*a);
+		a_nbr2sort = a_nbr2move(*a, *b, size_a);
+		b_nbr2sort = b_nbr2move(*b, a_nbr2sort);
+		sort(a, b, a_nbr2sort, b_nbr2sort);
+	}
+	sort_three(a);
+	sort2(a, b);
+	put_all_a(a);
 }
