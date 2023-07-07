@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:47:41 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 12:31:53 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:40:33 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	ab_top(t_node **a, t_node **b, int nbr2sort, int target)
 	while ((*a)->data != nbr2sort && (*b)->data != target)
 	{
 		if (rotations_a > size_a / 2 && rotations_b > size_b / 2)
-			rrr(a, b);
+			rrr(a, b, 1);
 		else if (rotations_a < size_a / 2 && rotations_b > size_b / 2)
 			rotate_a(a, j);
 		else if (rotations_b < size_b / 2 && rotations_a > size_a / 2)
 			rotate_b(b, j);
 		else
-			rr(a, b);
+			rr(a, b, 1);
 	}
 }
 

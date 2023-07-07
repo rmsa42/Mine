@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:00:02 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 16:37:17 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:13:50 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ void	check_args(char *argv[])
 	while (argv[i])
 	{
 		k = 0;
-		while (argv[i][k])
+		while (argv[i][k] != '\0')
 		{
-			if ((argv[i][k] >= '0' && argv[i][k] <= '9') || argv[i][k] == '-')
+			if (argv[i][k] >= '0' && argv[i][k] <= '9')
+				k++;
+			else if (argv[i][0] == '-' && k == 0)
 				k++;
 			else
 				error();
@@ -42,39 +44,32 @@ void	check_args(char *argv[])
 
 void	check_dup(t_node *a)
 {
+	t_node	*head_a;
 	t_node	*temp_a;
-	t_node	*temp_a2;
 	int		i;
-	int		j;
 
 	i = 0;
-	temp_a = a;
-	while (temp_a != NULL)
+	head_a = a;
+	while (a != NULL)
 	{
-		j = 0;
-		temp_a2 = a;
-		while (temp_a2 != NULL)
+		temp_a = a->next;
+		while (temp_a != NULL)
 		{
-			if ((temp_a2->data == temp_a->data) && (i != j))
-			{
-				free_list(&a);
-				error();
-			}
-			j++;
-			temp_a2 = temp_a2->next;
+			if (temp_a->data == a->data)
+				free_list(&head_a, 1);
+			temp_a = temp_a->next;
 		}
-		i++;
-		temp_a = temp_a->next;
+		a = a->next;
 	}
 }
 
-int	ft_atoi_2(const char *str)
+int	ft_atoi_2(t_node **a, const char *str)
 {
 	int			i;
 	long int	c;
-	int			a;
+	int			n;
 
-	a = 1;
+	n = 1;
 	c = 0;
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
@@ -82,7 +77,7 @@ int	ft_atoi_2(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			a = a * -1;
+			n = n * -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
@@ -90,7 +85,7 @@ int	ft_atoi_2(const char *str)
 		c = (str[i] - '0') + (c * 10);
 		i++;
 	}
-	if ((c * a) > 2147483647 || (c * a) < -2147483648)
-		return (c);
-	return (c * a);
+	if ((c * n) > 2147483647 || (c * n) < -2147483648)
+		free_list(a, 1);
+	return (c * n);
 }

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:20:08 by rumachad          #+#    #+#             */
-/*   Updated: 2023/06/30 14:37:52 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:04:47 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	min(t_node *list)
 
 int	check_sort(t_node *a)
 {
+	if (ft_lstsize_ps(a) == 1)
+		return (0);
 	while ((a->data <= a->next->data) && a != NULL)
 	{
 		a = a->next;

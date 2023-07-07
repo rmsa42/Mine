@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:04:23 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 15:53:36 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:03:51 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 void	check_moves_2(t_node **a, t_node **b, char *line)
 {
 	if (line[2] == '\n')
-		rr(a, b);
+		rr(a, b, 0);
 	else if (line[2] == 'a' && line[3] == '\n')
 		rrotate_a(a, 1);
 	else if (line[2] == 'b' && line[3] == '\n')
 		rrotate_b(b, 1);
 	else if (line[2] == 'r' && line[3] == '\n')
-		rrr(a, b);
+		rrr(a, b, 0);
 }
 
 void	check_moves(t_node **a, t_node **b, char *line)
@@ -32,7 +32,7 @@ void	check_moves(t_node **a, t_node **b, char *line)
 	else if (line[0] == 's' && line[1] == 'b' && line[2] == '\n')
 		swap_b(*b, 1);
 	else if (line[0] == 's' && line[1] == 's' && line[2] == '\n')
-		ss(*a, *b);
+		ss(*a, *b, 0);
 	else if (line[0] == 'p' && line[1] == 'a' && line[2] == '\n')
 		push_a(b, a, 1);
 	else if (line[0] == 'p' && line[1] == 'b' && line[2] == '\n')
@@ -93,11 +93,13 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	if (argc == 1)
 		return (0);
+	else if (argv[1][0] == '\0')
+		error();
 	else if (argc == 2 && ft_strchr(argv[1], ' '))
 		argv = split_argv(argv, &argc);
 	check_args(argv);
 	a = stack_init(argc, argv);
 	check_dup(a);
 	read_move(&a, &b);
-	free_list(&a);
+	free_list(&a, 0);
 }

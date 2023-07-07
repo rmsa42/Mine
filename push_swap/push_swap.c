@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 16:17:49 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 14:10:03 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	**split_argv(char *argv[], int *argc)
 		i++;
 		j++;
 	}
+	if (fake_argv[0] == NULL)
+		error();
 	*argc = j;
 	argv[j] = NULL;
 	return (argv);
@@ -55,16 +57,26 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	if (argc == 1)
 		return (0);
+	else if (argv[1][0] == '\0')
+		error();
 	else if (argc == 2 && ft_strchr(argv[1], ' '))
 		argv = split_argv(argv, &argc);
 	check_args(argv);
 	a = stack_init(argc, argv);
 	check_dup(a);
-	if (argc >= 2 && argc <= 5)
+	rrotate_a(&a, 0);
+	printf("\n");
+	while (a != NULL)
+	{
+		printf("%d\n", a->data);
+		a = a->next;
+	}
+	printf("-\na\n");
+	/* if (argc >= 2 && argc <= 5)
 		ws(&a, &b);
 	else if (argc == 6)
 		sort_five(&a, &b);
 	else
-		sort_hundred(&a, &b);
-	free_list(&a);
+		sort_hundred(&a, &b); */
+	free_list(&a, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:51:11 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 16:33:56 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:38:13 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct node
 
 t_node	*stack_init(int argc, char *argv[]);
 t_node	*create_node(int dt);
-void	free_list(t_node **lst);
-int		ft_atoi_2(const char *str);
+void	free_list(t_node **lst, int i);
+int		ft_atoi_2(t_node **a, const char *str);
 void	check_args(char *argv[]);
 void	check_dup(t_node *a);
 int		check_sort(t_node *a);
@@ -39,9 +39,9 @@ void	rotate_a(t_node **a, int i);
 void	rotate_b(t_node **b, int i);
 void	rrotate_a(t_node **a, int i);
 void	rrotate_b(t_node **b, int i);
-void	ss(t_node *a, t_node *b);
-void	rr(t_node **a, t_node **b);
-void	rrr(t_node **a, t_node **b);
+void	ss(t_node *a, t_node *b, int i);
+void	rr(t_node **a, t_node **b, int i);
+void	rrr(t_node **a, t_node **b, int i);
 void	sort_two(t_node **a);
 void	sort_three(t_node **a);
 void	sort_four(t_node **a, t_node **b);

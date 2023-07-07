@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:14:34 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 12:32:16 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 11:31:59 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ void	sort_hundred(t_node **a, t_node **b)
 	int	b_nbr2sort;
 
 	if (check_sort(*a) == 0)
-		exit(1);
+		return ;
 	push_b(b, a, 0);
 	push_b(b, a, 0);
 	size_a = ft_lstsize_ps(*a);
-	while (size_a > 4)
+	while (size_a > 3)
 	{
-		size_a = ft_lstsize_ps(*a);
 		a_nbr2sort = a_nbr2move(*a, *b, size_a);
 		b_nbr2sort = b_nbr2move(*b, a_nbr2sort);
 		sort(a, b, a_nbr2sort, b_nbr2sort);
+		size_a = ft_lstsize_ps(*a);
 	}
 	sort_three(a);
 	sort2(a, b);
