@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 14:10:03 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/07 15:05:49 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,11 @@ int	main(int argc, char *argv[])
 	check_args(argv);
 	a = stack_init(argc, argv);
 	check_dup(a);
-	rrotate_a(&a, 0);
-	printf("\n");
-	while (a != NULL)
-	{
-		printf("%d\n", a->data);
-		a = a->next;
-	}
-	printf("-\na\n");
-	/* if (argc >= 2 && argc <= 5)
+	if (argc >= 2 && argc <= 5)
 		ws(&a, &b);
 	else if (argc == 6)
 		sort_five(&a, &b);
 	else
-		sort_hundred(&a, &b); */
+		sort_hundred(&a, &b);
 	free_list(&a, 0);
 }
