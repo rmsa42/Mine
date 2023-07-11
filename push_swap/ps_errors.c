@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rui <rui@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:00:02 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/11 16:56:39 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:27:14 by rui              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ void	check_dup(t_node *a)
 {
 	t_node	*head_a;
 	t_node	*temp_a;
-	int		i;
 
-	i = 0;
 	head_a = a;
 	while (a != NULL)
 	{
