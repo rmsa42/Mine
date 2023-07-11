@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:51:11 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 11:38:13 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/11 15:40:28 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ void	sort(t_node **a, t_node **b, int nbr2sort, int target);
 void	sort2(t_node **a, t_node **b);
 int		mv_calcs(int rotations_a, int rotations_b, int size_a, int size_b);
 int		a_nbr2move(t_node *a, t_node *b, int size_a);
-int		b_nbr2move(t_node *b, int data_a);
+int		b_target(t_node *b, int data_a);
 
 #endif

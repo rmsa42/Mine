@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 15:36:22 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/05 15:12:44 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:15:23 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,8 @@ int	mv_calcs(int rotations_a, int rotations_b, int size_a, int size_b)
 	nbr_m = 0;
 	if (rotations_a > 0 && rotations_b > 0)
 	{
-		if ((rotations_a >= size_a / 2 && rotations_b >= size_b / 2)
-			|| (rotations_a > size_a / 2 && size_b == 2))
+		if (rotations_a >= size_a / 2 && rotations_b >= size_b / 2)
 			nbr_m = mv_calc1(rotations_a, rotations_b, size_a, size_b);
-		else if (rotations_a == rotations_b)
-			nbr_m = rotations_a;
 		else if (rotations_a > size_a / 2 && rotations_b < size_b / 2)
 			nbr_m = (size_a - rotations_a) + rotations_b;
 		else if (rotations_b > size_b / 2 && rotations_a < size_a / 2)

@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:00:02 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 16:06:49 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:56:39 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ void	check_args(char *argv[])
 
 	i = 1;
 	k = 0;
-	if (argv[i][k + 1] == '\0' && argv[i + 1] == NULL 
-		&& (argv[i][k] <= '0' || argv[i][k] >= '9'))
-		error();
 	while (argv[i])
 	{
 		k = 0;
+		if (argv[i][k + 1] == '\0' && (argv[i][k] < '0' || argv[i][k] > '9'))
+			error();
 		while (argv[i][k] != '\0')
 		{
+			if (argv[i][0] == '0' && argv[i][1])
+				error();
 			if (argv[i][k] >= '0' && argv[i][k] <= '9')
 				k++;
 			else if (argv[i][0] == '-' && k == 0)
