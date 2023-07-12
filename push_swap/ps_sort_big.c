@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:14:34 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 11:51:24 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:17:36 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 
 void	rotating_a(t_node **a)
 {
-	int	j;
 	int	size;
 	int	position;
 
-	j = 0;
 	position = check_position(*a, min(*a));
 	size = ft_lstsize_ps(*a);
 	while ((*a)->data != min(*a))
 	{
 		if (position > size / 2)
-			rrotate_a(a, j);
+			rrotate_a(a, 0);
 		else
-			rotate_a(a, j);
+			rotate_a(a, 0);
 	}
 }
 
