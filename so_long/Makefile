@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/11 09:53:34 by rumachad          #+#    #+#              #
-#    Updated: 2023/07/11 12:39:34 by rumachad         ###   ########.fr        #
+#    Updated: 2023/07/12 14:44:29 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,11 +21,11 @@ HEADER = so_long.h
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
-MLX = ${MLX_PATH} -Imlx -lXext -lX11 -lm -lz
+MLX = ${MLX_PATH} -L. -lXext -L. -lX11
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${HEADER}
 			make -C ${LIBFT_DIR}
 			make -C ${MLX_DIR}
 			${CC} ${CFLAGS} ${OBJS} ${MLX} ${LIBFT_PATH} -o ${NAME}
