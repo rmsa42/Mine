@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:47:41 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 11:12:07 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:01:48 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	a_top(t_node **a, int nbr2sort)
 {
 	int	rotations_a;
 	int	size_a;
-	
+
 	size_a = ft_lstsize_ps(*a);
 	rotations_a = check_position(*a, nbr2sort);
 	while ((*a)->data != nbr2sort)
@@ -71,7 +71,6 @@ void	ab_top(t_node **a, t_node **b, int nbr2sort, int target)
 
 void	sort(t_node **a, t_node **b, int nbr2sort, int target)
 {
-
 	ab_top(a, b, nbr2sort, target);
 	if ((*a)->data == nbr2sort && (*b)->data != target)
 		b_top(b, target);
