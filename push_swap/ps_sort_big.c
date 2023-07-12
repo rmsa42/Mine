@@ -6,14 +6,14 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:14:34 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/11 15:41:50 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:51:24 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	put_all_a(t_node **a)
+void	rotating_a(t_node **a)
 {
 	int	j;
 	int	size;
@@ -51,5 +51,5 @@ void	sort_hundred(t_node **a, t_node **b)
 	}
 	sort_three(a);
 	sort2(a, b);
-	put_all_a(a);
+	rotating_a(a);
 }

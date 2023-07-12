@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:19:21 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 10:38:38 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:49:45 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ void	sort_btw_min_max(t_node **a, t_node **b, int size)
 {
 	t_node	*temp_a;
 	int		position;
-	int		nbr;
+	int		target;
 
-	nbr = max(*a);
+	target = max(*a);
 	temp_a = *a;
 	while (temp_a != NULL)
 	{
-		if ((nbr > temp_a->data && temp_a->data > (*b)->data))
-			nbr = temp_a->data;
+		if (target > temp_a->data && temp_a->data > (*b)->data)
+			target = temp_a->data;
 		temp_a = temp_a->next;
 	}
-	position = check_position(*a, nbr);
-	while ((*a)->data != nbr)
+	position = check_position(*a, target);
+	while ((*a)->data != target)
 	{
 		if (position > size / 2)
 			rrotate_a(a, 0);
