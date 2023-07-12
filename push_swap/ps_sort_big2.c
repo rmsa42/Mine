@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:47:41 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 11:40:33 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 10:38:15 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,33 @@
 
 void	a_top(t_node **a, int nbr2sort, int rotations_a, int size_a)
 {
-	int	j;
-
-	j = 0;
 	while ((*a)->data != nbr2sort)
 	{
 		if (rotations_a > size_a / 2)
-			rrotate_a(a, j);
+			rrotate_a(a, 0);
 		else
-			rotate_a(a, j);
+			rotate_a(a, 0);
 	}
 }
 
 void	b_top(t_node **b, int target, int rotations_b, int size_b)
 {
-	int	j;
-
-	j = 0;
 	while ((*b)->data != target)
 	{
 		if (rotations_b > size_b / 2)
-			rrotate_b(b, j);
+			rrotate_b(b, 0);
 		else
-			rotate_b(b, j);
+			rotate_b(b, 0);
 	}
 }
 
 void	ab_top(t_node **a, t_node **b, int nbr2sort, int target)
 {
-	int	j;
 	int	rotations_a;
 	int	rotations_b;
 	int	size_a;
 	int	size_b;
 
-	j = 0;
 	size_a = ft_lstsize_ps(*a);
 	size_b = ft_lstsize_ps(*b);
 	rotations_a = check_position(*a, nbr2sort);
@@ -59,9 +51,9 @@ void	ab_top(t_node **a, t_node **b, int nbr2sort, int target)
 		if (rotations_a > size_a / 2 && rotations_b > size_b / 2)
 			rrr(a, b, 1);
 		else if (rotations_a < size_a / 2 && rotations_b > size_b / 2)
-			rotate_a(a, j);
+			rotate_a(a, 0);
 		else if (rotations_b < size_b / 2 && rotations_a > size_a / 2)
-			rotate_b(b, j);
+			rotate_b(b, 0);
 		else
 			rr(a, b, 1);
 	}

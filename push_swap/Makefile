@@ -6,7 +6,7 @@
 #    By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 10:56:36 by rumachad          #+#    #+#              #
-#    Updated: 2023/07/11 10:22:21 by rumachad         ###   ########.fr        #
+#    Updated: 2023/07/12 10:08:20 by rumachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ LIBFT_DIR = libft
 LIBFT_PATH = ${LIBFT_DIR}/libft.a
 OBJS_BONUS = ${SRC_BONUS:.c=.o}
 OBJS = ${SRC:.c=.o}
-HEADER = push_swap.h
 CC = cc
 RM = rm -f
 CFLAGS = -Wall -Werror -Wextra
@@ -32,7 +31,7 @@ CFLAGS = -Wall -Werror -Wextra
 ${NAME}:	${OBJS}
 			make -C ${LIBFT_DIR}
 			cp ${LIBFT_PATH} ${NAME}
-			ar rcs ${NAME} ${OBJS} ${HEADER}
+			ar rcs ${NAME} ${OBJS}
 			${CC} ${CFLAGS} ${NAME} -o push_swap
 
 all:	${NAME} bonus
@@ -50,6 +49,7 @@ fclean: clean
 re:	clean all
 
 bonus:	${NAME}	${OBJS_BONUS}
+		make -C ${LIBFT_DIR}
 		${CC} ${CFLAGS} ${OBJS_BONUS} ${NAME} -o ${BONUS}
 
 .SILENT:

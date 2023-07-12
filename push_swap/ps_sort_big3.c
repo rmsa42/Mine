@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:19:21 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/06 12:31:41 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 10:38:38 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@
 void	sort_min_max(t_node **a, t_node **b, int size)
 {
 	int	position;
-	int	j;
 
-	j = 0;
 	position = check_position(*a, min(*a));
 	while ((*a)->data != min(*a))
 	{
 		if (position > size / 2)
-			rrotate_a(a, j);
+			rrotate_a(a, 0);
 		else
-			rotate_a(a, j);
+			rotate_a(a, 0);
 	}
 	push_a(b, a, 0);
 }
@@ -34,10 +32,8 @@ void	sort_btw_min_max(t_node **a, t_node **b, int size)
 {
 	t_node	*temp_a;
 	int		position;
-	int		j;
 	int		nbr;
 
-	j = 0;
 	nbr = max(*a);
 	temp_a = *a;
 	while (temp_a != NULL)
@@ -50,9 +46,9 @@ void	sort_btw_min_max(t_node **a, t_node **b, int size)
 	while ((*a)->data != nbr)
 	{
 		if (position > size / 2)
-			rrotate_a(a, j);
+			rrotate_a(a, 0);
 		else
-			rotate_a(a, j);
+			rotate_a(a, 0);
 	}
 	push_a(b, a, 0);
 }
