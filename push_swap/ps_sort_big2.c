@@ -6,15 +6,20 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 12:47:41 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 10:38:15 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:12:07 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	a_top(t_node **a, int nbr2sort, int rotations_a, int size_a)
+void	a_top(t_node **a, int nbr2sort)
 {
+	int	rotations_a;
+	int	size_a;
+	
+	size_a = ft_lstsize_ps(*a);
+	rotations_a = check_position(*a, nbr2sort);
 	while ((*a)->data != nbr2sort)
 	{
 		if (rotations_a > size_a / 2)
@@ -24,8 +29,13 @@ void	a_top(t_node **a, int nbr2sort, int rotations_a, int size_a)
 	}
 }
 
-void	b_top(t_node **b, int target, int rotations_b, int size_b)
+void	b_top(t_node **b, int target)
 {
+	int	rotations_b;
+	int	size_b;
+
+	size_b = ft_lstsize_ps(*b);
+	rotations_b = check_position(*b, target);
 	while ((*b)->data != target)
 	{
 		if (rotations_b > size_b / 2)
@@ -61,19 +71,11 @@ void	ab_top(t_node **a, t_node **b, int nbr2sort, int target)
 
 void	sort(t_node **a, t_node **b, int nbr2sort, int target)
 {
-	int	rotations_a;
-	int	rotations_b;
-	int	size_a;
-	int	size_b;
 
-	size_a = ft_lstsize_ps(*a);
-	size_b = ft_lstsize_ps(*b);
-	rotations_a = check_position(*a, nbr2sort);
-	rotations_b = check_position(*b, target);
 	ab_top(a, b, nbr2sort, target);
 	if ((*a)->data == nbr2sort && (*b)->data != target)
-		b_top(b, target, rotations_b, size_b);
+		b_top(b, target);
 	else if ((*b)->data == target && (*a)->data != nbr2sort)
-		a_top(a, nbr2sort, rotations_a, size_a);
+		a_top(a, nbr2sort);
 	push_b(b, a, 0);
 }

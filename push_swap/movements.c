@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 10:25:10 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 15:35:19 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:05:40 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,8 @@ t_node	*swap_b(t_node *b, int i)
 
 void	ss(t_node *a, t_node *b, int i)
 {
-	int	k;
-
-	k = 1;
-	swap_a(a, k);
-	swap_b(b, k);
+	swap_a(a, 1);
+	swap_b(b, 1);
 	if (i != 0)
 		ft_printf("ss\n");
 }
