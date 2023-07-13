@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 11:44:38 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/13 15:50:15 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:07:31 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 	check_args(argv, flag);
 	a = stack_init(argv, flag);
 	check_dup(a);
-	if (argc >= 2 && argc <= 6)
+	if (argc >= 2)
 		which_sort(&a, &b);
 	if (flag == 0)
 		free_array2d(argv);
