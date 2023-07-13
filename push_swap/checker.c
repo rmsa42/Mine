@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:04:23 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 16:01:33 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:45:12 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,42 +64,39 @@ void	read_move(t_node **a, t_node **b)
 		write(1, "KO\n", 3);
 }
 
-char	**split_argv(char *argv[], int *argc)
+void	free_array2d(char *argv[])
 {
-	char	**fake_argv;
-	int		i;
-	int		j;
+	int	i;
 
-	fake_argv = ft_split(argv[1], ' ');
 	i = 0;
-	j = 1;
-	while (fake_argv[i])
-	{
-		argv[j] = fake_argv[i];
-		i++;
-		j++;
-	}
-	*argc = j;
-	argv[j] = NULL;
-	return (argv);
+	while (argv[i])
+		free(argv[i++]);
+	free(argv);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_node	*a;
 	t_node	*b;
+	int		flag;
 
 	a = NULL;
 	b = NULL;
+	flag = 1;
 	if (argc == 1)
 		return (0);
 	else if (argv[1][0] == '\0')
 		error();
 	else if (argc == 2 && ft_strchr(argv[1], ' '))
-		argv = split_argv(argv, &argc);
-	check_args(argv);
-	a = stack_init(argc, argv);
+	{
+		argv = ft_split(argv[1], ' ');
+		flag = 0;
+	}
+	check_args(argv, flag);
+	a = stack_init(argv, flag);
 	check_dup(a);
 	read_move(&a, &b);
+	if (flag == 0)
+		free_array2d(argv);
 	free_list(&a, 0);
 }

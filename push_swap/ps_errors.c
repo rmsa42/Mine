@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:00:02 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 10:25:09 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:14:26 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ void	error(void)
 	exit(1);
 }
 
-void	check_args(char *argv[])
+void	check_args(char *argv[], int flag)
 {
 	int	i;
 	int	k;
 
 	i = 1;
 	k = 0;
+	if (flag == 0)
+		i = 0;
 	while (argv[i])
 	{
 		k = 0;

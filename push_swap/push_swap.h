@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:51:11 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/11 15:40:28 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:44:24 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ typedef struct node
 	struct node	*next;
 }					t_node;
 
-t_node	*stack_init(int argc, char *argv[]);
+t_node	*stack_init(char *argv[], int flag);
 t_node	*create_node(int dt);
 void	free_list(t_node **lst, int i);
 int		ft_atoi_2(t_node **a, const char *str);
-void	check_args(char *argv[]);
+void	check_args(char *argv[], int flag);
 void	check_dup(t_node *a);
 int		check_sort(t_node *a);
 void	error(void);
@@ -48,7 +48,7 @@ void	sort_four(t_node **a, t_node **b);
 void	sort_five(t_node **a, t_node **b);
 void	sort_hundred(t_node **a, t_node **b);
 void	sort(t_node **a, t_node **b, int nbr2sort, int target);
-void	sort2(t_node **a, t_node **b);
+void	put_all_a(t_node **a, t_node **b);
 int		mv_calcs(int rotations_a, int rotations_b, int size_a, int size_b);
 int		a_nbr2move(t_node *a, t_node *b, int size_a);
 int		b_target(t_node *b, int data_a);

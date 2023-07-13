@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:04:31 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/07 16:35:13 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:06:35 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,21 @@ int	ft_lstsize_ps(t_node *a)
 	}
 }
 
-t_node	*stack_init(int argc, char *argv[])
+t_node	*stack_init(char *argv[], int flag)
 {
 	t_node	*a;
 	t_node	*head_a;
 	int		i;
 
 	i = 1;
+	if (flag == 0)
+		i = flag;
 	a = NULL;
 	head_a = NULL;
 	a = create_node(ft_atoi_2(&head_a, argv[i]));
 	i++;
 	head_a = a;
-	while (i < argc)
+	while (argv[i])
 	{
 		a->next = create_node(ft_atoi_2(&head_a, argv[i]));
 		a = a->next;

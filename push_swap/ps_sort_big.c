@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 15:14:34 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 12:17:36 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:44:42 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	sort_hundred(t_node **a, t_node **b)
 		size_a = ft_lstsize_ps(*a);
 	}
 	sort_three(a);
-	sort2(a, b);
+	put_all_a(a, b);
 	rotating_a(a);
 }

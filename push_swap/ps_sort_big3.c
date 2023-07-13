@@ -6,7 +6,7 @@
 /*   By: rumachad <rumachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 16:19:21 by rumachad          #+#    #+#             */
-/*   Updated: 2023/07/12 11:49:45 by rumachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:44:14 by rumachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sort_btw_min_max(t_node **a, t_node **b, int size)
 	push_a(b, a, 0);
 }
 
-void	sort2(t_node **a, t_node **b)
+void	put_all_a(t_node **a, t_node **b)
 {
 	int		size;
 
